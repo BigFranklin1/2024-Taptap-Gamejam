@@ -11,7 +11,7 @@ namespace KinematicCharacterController.Walkthrough.Crouching
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
         public MyCharacterController Character;
-
+        public bool enableInteraction = true;
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
@@ -32,12 +32,14 @@ namespace KinematicCharacterController.Walkthrough.Crouching
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+            if(enableInteraction){
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
 
-            HandleCharacterInput();
+                HandleCharacterInput();
+            }
         }
 
         private void LateUpdate()
