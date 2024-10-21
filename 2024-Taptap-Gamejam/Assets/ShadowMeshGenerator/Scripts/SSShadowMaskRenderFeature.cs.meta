@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d7041e48439123a4b8e179f096419398
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shadowPointsExtractionShader: {fileID: 7200000, guid: c3090452d91d9d94eb35a4e01ed0176e,
+      type: 3}
+  - SSShadowMaskRenderTexture: {fileID: 8400000, guid: 077c1e8044f8e874cbee0434dba714dd,
+      type: 2}
+  - SSShadowPointsRenderTexture: {fileID: 8400000, guid: a62e1b3ebea0d6642be34bc791f03123,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

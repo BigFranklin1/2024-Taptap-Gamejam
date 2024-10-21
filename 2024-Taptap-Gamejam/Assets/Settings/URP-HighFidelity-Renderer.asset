@@ -114,7 +114,7 @@ MonoBehaviour:
     type: 3}
   SSShadowMaskRenderTexture: {fileID: 8400000, guid: 077c1e8044f8e874cbee0434dba714dd,
     type: 2}
-  SSShadowPointsRenderTexture: {fileID: 8400000, guid: 20b99b9130789ef4c83f7bc3d08c9d90,
+  SSShadowPointsRenderTexture: {fileID: 8400000, guid: a62e1b3ebea0d6642be34bc791f03123,
     type: 2}
 --- !u!114 &5129625910716309342
 MonoBehaviour:

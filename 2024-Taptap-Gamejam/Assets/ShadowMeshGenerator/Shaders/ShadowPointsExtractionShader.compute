@@ -1,0 +1,22 @@
+﻿#pragma kernel CSShadowPointsExtraction
+
+AppendStructuredBuffer<float3> ShadowPoints;
+RWTexture2D<float4> Result;
+Texture2D<float4> Input;
+
+[numthreads(8, 8, 1)]
+void CSShadowPointsExtraction(uint3 id : SV_DispatchThreadID)
+{
+    float isShadow = Input.Load(int3(id.xy, 0)).a;
+    if (isShadow > 0.0)
+    {
+        float3 worldPosition = Input.Load(int3(id.xy, 0)).rgb;
+        ShadowPoints.Append(worldPosition);
+        
+        Result[id.xy] = float4(worldPosition.r, worldPosition.g, worldPosition.b, 1.0);
+    }
+    else
+    {
+        Result[id.xy] = float4(0.0, 0.0, 0.0, 1.0);
+    }
+}
