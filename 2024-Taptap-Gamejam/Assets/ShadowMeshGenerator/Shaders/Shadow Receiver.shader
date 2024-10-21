@@ -4,69 +4,68 @@ Shader "Unlit/ShadowReceiver"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline"}
         LOD 100
 
-        Pass
-        {
-            Tags { "LightMode" = "UniversalForward" }
+        // Pass
+        // {
+        //     Tags { "LightMode" = "UniversalForward" }
 
-            HLSLPROGRAM
+        //     HLSLPROGRAM
 
-            #pragma vertex vert
-            #pragma fragment frag
+        //     #pragma vertex vert
+        //     #pragma fragment frag
             
-            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE 
-            #pragma multi_compile _ _SHADOWS_SOFT 
-            #pragma multi_compile _ _ADDTIONAL_LIGHT_SHADOWS
+        //     #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE 
+        //     #pragma multi_compile _ _SHADOWS_SOFT 
+        //     #pragma multi_compile _ _ADDTIONAL_LIGHT_SHADOWS
 
-            #define ADDITIONAL_LIGHT_CALCULATE_SHADOWS
+        //     #define ADDITIONAL_LIGHT_CALCULATE_SHADOWS
 
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        //     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+        //     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct a2v
-            {
-                float4 vertex : POSITION;
-            };
+        //     struct a2v
+        //     {
+        //         float4 vertex : POSITION;
+        //     };
 
-            struct v2f
-            {
-                float4 pos : SV_POSITION;
-                float3 worldPos : TEXCOORD0;
-            };
+        //     struct v2f
+        //     {
+        //         float4 pos : SV_POSITION;
+        //         float3 worldPos : TEXCOORD0;
+        //     };
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
+        //     sampler2D _MainTex;
+        //     float4 _MainTex_ST;
 
-            v2f vert (a2v v)
-            {
-                v2f o;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-                o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                return o;
-            }
+        //     v2f vert (a2v v)
+        //     {
+        //         v2f o;
+        //         o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+        //         o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+        //         return o;
+        //     }
             
-            float4 frag (v2f i) : SV_Target
-            {
-                float4 color = 0.0;
-                int pixelLightCount = GetAdditionalLightsCount();
-                for (int lightIndex=0; lightIndex<pixelLightCount; lightIndex++) {
-                    Light light = GetAdditionalLight(lightIndex, i.worldPos);
-                    if (light.layerMask == 2) {
-                        float shadow = AdditionalLightRealtimeShadow(lightIndex, i.worldPos);
-                        color = float4(shadow, shadow, shadow, 1.0);
-                    }
-                }
-                return color;
-            }
+        //     float4 frag (v2f i) : SV_Target
+        //     {
+        //         float4 color = 0.0;
+        //         int pixelLightCount = GetAdditionalLightsCount();
+        //         for (int lightIndex=0; lightIndex<pixelLightCount; lightIndex++) {
+        //             Light light = GetAdditionalLight(lightIndex, i.worldPos);
+        //             if (light.layerMask == 2) {
+        //                 float shadow = AdditionalLightRealtimeShadow(lightIndex, i.worldPos);
+        //                 color = float4(shadow, shadow, shadow, 1.0);
+        //             }
+        //         }
+        //         return color;
+        //     }
 
-            ENDHLSL
-        }
+        //     ENDHLSL
+        // }
 
         Pass
         {

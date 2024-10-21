@@ -20,7 +20,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
         private ComputeBuffer pointBuffer;
         private ComputeBuffer pointCountBuffer;
         private GraphicsFence fence;
-        private MeshGenerator meshGenerator;
+        private ShadowMeshGenerator shadowMeshGenerator;
 
         public ShadowMaskRenderPass(RTHandle maskRTHandle, RTHandle pointsRTHandle, ComputeShader shadowPointsExtractionShader)
         {
@@ -55,73 +55,70 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
 
         private void OnRenderPassComplete(ScriptableRenderContext context)
         {
-            if (this.meshGenerator == null)
+            if (this.shadowMeshGenerator == null)
             {
-                this.meshGenerator = GameObject.FindWithTag("MeshGenerator").GetComponent<MeshGenerator>();
-                if (this.meshGenerator == null)
+                this.shadowMeshGenerator = GameObject.FindWithTag("MeshGenerator").GetComponent<ShadowMeshGenerator>();
+                if (this.shadowMeshGenerator == null)
                     Debug.LogError("MeshGenerator not found in the scene.");
-                this.ToGenerateShadowMesh += this.meshGenerator.ToGenerateMeshHandler;
+                this.ToGenerateShadowMesh += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
             }
 
             ShadowPointsExtraction(context);
 
-            AsyncGPUReadback.Request(this.pointCountBuffer, (AsyncGPUReadbackRequest request) =>
-            {
-                if (request.hasError)
-                {
-                    Debug.LogError("GPU readback error.");
-                    return;
-                }
-
-                int[] pointCountArray = request.GetData<int>().ToArray();
-                int pointCount = pointCountArray[0];
-
-                if (pointCount == 0)
-                {
-                    Debug.LogWarning("No points found.");
-                    return;
-                }
-
-                Debug.Log("Point count: " + pointCount);
-                Vector3[] pointDataArray = new Vector3[pointCount];
-                this.pointBuffer.GetData(pointDataArray);
-
-                ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
-
-                ReleaseBuffers();
-            });
-
-            //int[] pointCountArray = new int[1];
-            //this.pointCountBuffer.GetData(pointCountArray);
-            //int pointCount = pointCountArray[0];
-
-            //if (pointCount == 0)
+            //AsyncGPUReadback.Request(this.pointCountBuffer, (AsyncGPUReadbackRequest request) =>
             //{
-            //    Debug.LogWarning("No points found.");
-            //    return;
-            //}
-            //Debug.Log("Point count: " + pointCount);
-            //Vector3[] pointDataArray = new Vector3[pointCount];
-            //this.pointBuffer.GetData(pointDataArray);
+            //    if (request.hasError)
+            //    {
+            //        Debug.LogError("GPU readback error.");
+            //        return;
+            //    }
 
-            //this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
+            //    int[] pointCountArray = request.GetData<int>().ToArray();
+            //    int pointCount = pointCountArray[0];
 
-            //ReleaseBuffers();
+            //    if (pointCount == 0)
+            //    {
+            //        Debug.LogWarning("No points found.");
+            //        return;
+            //    }
+
+            //    Debug.Log("Point count: " + pointCount);
+            //    Vector3[] pointDataArray = new Vector3[pointCount];
+            //    this.pointBuffer.GetData(pointDataArray);
+
+            //    this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
+
+            //    ReleaseBuffers();
+            //});
+
+            int[] pointCountArray = new int[1];
+            this.pointCountBuffer.GetData(pointCountArray);
+            int pointCount = pointCountArray[0];
+
+            if (pointCount == 0)
+            {
+                Debug.LogWarning("No points found.");
+                return;
+            }
+            Debug.Log("Point count: " + pointCount);
+            Vector3[] pointDataArray = new Vector3[pointCount];
+            this.pointBuffer.GetData(pointDataArray);
+
+            this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
+
+            ReleaseBuffers();
         }
 
         private void ShadowPointsExtraction(ScriptableRenderContext context)
         {
-            this.pointBuffer = new ComputeBuffer(2000000, sizeof(float) * 3, ComputeBufferType.Append);
+            this.pointBuffer = new ComputeBuffer(200000, sizeof(float) * 3, ComputeBufferType.Append);
             this.pointCountBuffer = new ComputeBuffer(1, sizeof(int), ComputeBufferType.Raw);
 
-            CommandBuffer cmd = CommandBufferPool.Get("EdgeDetection");
+            CommandBuffer cmd = CommandBufferPool.Get("ShadowPointsExtraction");
             cmd.WaitOnAsyncGraphicsFence(fence);
 
             this.pointBuffer.SetCounterValue(0);
-            Vector3[] pointDataArray = new Vector3[2000000];
-            this.pointBuffer.SetData(pointDataArray);
-            int[] pointCount = new int[1];
-            this.pointCountBuffer.SetData(pointCount);
+
             int kernelHandle = this.shadowPointsExtractionShader.FindKernel("CSShadowPointsExtraction");
 
             cmd.SetComputeTextureParam(this.shadowPointsExtractionShader, kernelHandle, "Input", this.maskRTHandle.rt);
@@ -192,29 +189,6 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
     public void EnableShadowCatching() 
     { 
         isEnabled = true;
-    }
-    protected void OnRenderPassComplete(ScriptableRenderContext context)
-    {
-        //int[] vertexCountArray = new int[1];
-        //this.vertexCountBuffer.GetData(vertexCountArray);
-        //int vertexCount = vertexCountArray[0];
-
-        //if (vertexCount == 0)
-        //{
-        //    Debug.LogWarning("No vertices found.");
-        //    return;
-        //}
-        //Debug.Log("Vertex count: " + vertexCount);
-        //VertexData[] vertexDataArray = new VertexData[vertexCount];
-        //this.vertexBuffer.GetData(vertexDataArray);
-        ////for (int i = 0; i < vertexCount; i++)
-        ////{
-        ////    Debug.Log($"Vertex {i} - World Position: {vertexDataArray[i].worldPosition}, Pixel Position: {vertexDataArray[i].pixelPosition}");
-        ////}
-
-        //ToGenerateShadowMesh?.Invoke(vertexCount, vertexDataArray);
-
-        //ReleaseBuffers();
     }
 
     void OnDisable()
