@@ -15,7 +15,7 @@ public class PlatformInteractor : MonoBehaviour
     void Update()
     {
         // Check if the player is near the interactable object
-        float distanceToInteractable = Vector3.Distance(playerObj.transform.position, interactableObj.transform.position);
+        float distanceToInteractable = Vector3.Distance(playerObj.transform.position, transform.position);
         if (distanceToInteractable <= interactionRange)
         {
             ui.SetActive(true);
