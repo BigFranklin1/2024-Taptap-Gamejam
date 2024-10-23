@@ -21,6 +21,38 @@ public class InteractableObject : MonoBehaviour
     }
 
     // 处理对象旋转
+    //void HandleRotation()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        isDragging = true;
+    //        lastMousePosition = Input.mousePosition;
+    //    }
+
+    //    if (Input.GetMouseButtonUp(0))
+    //    {
+    //        isDragging = false;
+    //    }
+
+    //    if (isDragging)
+    //    {
+    //        // 获取当前鼠标位置和上一次鼠标位置之间的差值
+    //        Vector3 deltaMouse = Input.mousePosition - lastMousePosition;
+
+    //        // X 轴旋转 (上下移动控制绕 X 轴旋转)
+    //        float rotationX = deltaMouse.y * rotationSpeed * Time.deltaTime;
+
+    //        // Y 轴旋转 (左右移动控制绕 Y 轴旋转)
+    //        float rotationY = -deltaMouse.x * rotationSpeed * Time.deltaTime;
+
+    //        // 旋转物体（限制 Z 轴旋转，防止翻转）
+    //        transform.rotation *= Quaternion.Euler(rotationX, rotationY, 0);
+
+    //        // 更新最后的鼠标位置
+    //        lastMousePosition = Input.mousePosition;
+    //    }
+    //}
+
     void HandleRotation()
     {
         if (Input.GetMouseButtonDown(0))
@@ -36,13 +68,19 @@ public class InteractableObject : MonoBehaviour
 
         if (isDragging)
         {
+            // 获取当前鼠标位置和上一次鼠标位置之间的差值
             Vector3 deltaMouse = Input.mousePosition - lastMousePosition;
-            float rotationX = deltaMouse.y * rotationSpeed * Time.deltaTime; // 根据鼠标y轴旋转对象的x轴
-            float rotationY = -deltaMouse.x * rotationSpeed * Time.deltaTime; // 根据鼠标x轴旋转对象的y轴
 
-            transform.Rotate(Vector3.up, rotationY, Space.World);
-            transform.Rotate(Vector3.right, rotationX, Space.World);
+            // X 轴旋转 (上下移动控制绕 X 轴旋转)
+            float rotationX = deltaMouse.y * rotationSpeed * Time.deltaTime;
 
+            // Y 轴旋转 (左右移动控制绕 Y 轴旋转)
+            float rotationY = -deltaMouse.x * rotationSpeed * Time.deltaTime;
+
+            // 旋转物体（限制 Z 轴旋转，防止翻转）
+            transform.rotation *= Quaternion.Euler(rotationX, rotationY, 0);
+
+            // 更新最后的鼠标位置
             lastMousePosition = Input.mousePosition;
         }
     }
@@ -53,6 +91,19 @@ public class InteractableObject : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        transform.Translate(new Vector3(moveX, 0, moveY), Space.World);
+        // 初始化 Y 轴的移动量
+        float moveZ = 0;
+
+        // 通过 Q 和 E 键控制 Y 轴的运动
+        if (Input.GetKey(KeyCode.Q))
+        {
+            moveZ = moveSpeed * Time.deltaTime; // Q 键使物体上升
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            moveZ = -moveSpeed * Time.deltaTime; // E 键使物体下降
+        }
+
+        transform.Translate(new Vector3(-moveX, moveZ, -moveY), Space.World);
     }
 }

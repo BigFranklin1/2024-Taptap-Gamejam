@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba640c66d558ee048beeef714ee7f791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 272.3
+  rotationSpeed: 200
   moveSpeed: 5
   enableInteraction: 0
 --- !u!1 &415931177 stripped
@@ -8328,7 +8328,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Q to interact/quit
+  m_text: 'Press R to Interact/Quit
+
+    Press Space to Catch Shadow
+
+    Press WASD/QE
+    to move objects
+
+    Press T to toggle '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8355,8 +8362,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
-  m_fontSizeBase: 0.5
+  m_fontSize: 0.3
+  m_fontSizeBase: 0.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8391,7 +8398,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 2.2634897}
+  m_margin: {x: 0, y: 0, z: 0.14885616, w: 2.2634897}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -13101,10 +13108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableObj: {fileID: 415823794}
-  playerManager: {fileID: 0}
-  playerObj: {fileID: 0}
-  ui: {fileID: 0}
-  interactionRange: 5
+  playerManager: {fileID: 1068218264}
+  playerObj: {fileID: 380090446}
+  ui: {fileID: 405464017}
+  interactionRange: 2
+  smg: {fileID: 2139262806}
 --- !u!65 &1610098187
 BoxCollider:
   m_ObjectHideFlags: 0

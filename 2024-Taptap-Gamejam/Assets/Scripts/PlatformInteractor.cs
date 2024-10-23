@@ -21,7 +21,7 @@ public class PlatformInteractor : MonoBehaviour
         {
             ui.SetActive(true);
             // If player is within range and presses the 'E' key
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 isInteracting = !isInteracting; // Toggle interaction state
                 if(isInteractingWithShadow)
@@ -52,7 +52,7 @@ public class PlatformInteractor : MonoBehaviour
 
             if (isInteracting || isInteractingWithShadow) 
             {
-                if (Input.GetKeyDown(KeyCode.E)) 
+                if (Input.GetKeyDown(KeyCode.Space)) 
                 {
                     // disable interactable gameobject
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
