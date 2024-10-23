@@ -25,6 +25,8 @@ public class ShadowMeshGenerator : MonoBehaviour
     private ShadowMaskRenderFeature shadowMaskRenderFeature;
     private GameObject existingShadowMesh;
 
+    // interaction level
+    //public GameObject platform;
     void Start()
     {
         foreach (var feature in UniversalRendererData.rendererFeatures)
@@ -38,15 +40,21 @@ public class ShadowMeshGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+            //if (shadowMaskRenderFeature != null)
+            //{
+            //    shadowMaskRenderFeature.EnableShadowCatching();
+            //}
+        //}
+    }
+    public void ShadowCatch() 
+    {
+        if (shadowMaskRenderFeature != null)
         {
-            if (shadowMaskRenderFeature != null)
-            {
-                shadowMaskRenderFeature.EnableShadowCatching();
-            }
+            shadowMaskRenderFeature.EnableShadowCatching();
         }
     }
-
     public void ToGenerateShadowMeshHandler(int pointCount, Vector3[] pointDataArray)
     {
         this.pointCount = pointCount;
@@ -162,7 +170,17 @@ public class ShadowMeshGenerator : MonoBehaviour
         existingShadowMesh.AddComponent<MeshFilter>().mesh = mesh;
         existingShadowMesh.AddComponent<MeshRenderer>().material = new Material(Shader.Find("Shader Graphs/GeneratedShadowMesh"));
         existingShadowMesh.AddComponent<MeshCollider>().sharedMesh = mesh;
-        existingShadowMesh.AddComponent<Rigidbody>().mass = 0.0f;
-        existingShadowMesh.AddComponent<PlatformInteractor>();
+
+        existingShadowMesh.AddComponent<InteractableObject>();
+
+        //existingShadowMesh.AddComponent<Rigidbody>().mass = 0.0f;
+        //existingShadowMesh.AddComponent<PlatformInteractor>();
+
+        //existingShadowMesh.GetComponent<PlatformInteractor>().interactionRange = 2.0f;
+        //existingShadowMesh.GetComponent<PlatformInteractor>().interactableObj = transform.gameObject;
+        //existingShadowMesh.GetComponent<PlatformInteractor>().playerObj = platform.GetComponent<PlatformInteractor>().playerObj;
+        //existingShadowMesh.GetComponent<PlatformInteractor>().playerManager = platform.GetComponent<PlatformInteractor>().playerManager;
+        //existingShadowMesh.GetComponent<PlatformInteractor>().ui = platform.GetComponent<PlatformInteractor>().ui;
+
     }
 }

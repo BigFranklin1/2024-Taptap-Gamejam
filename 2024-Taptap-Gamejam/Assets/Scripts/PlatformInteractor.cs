@@ -9,9 +9,10 @@ public class PlatformInteractor : MonoBehaviour
     public GameObject playerManager;          // The player object
     public GameObject playerObj;
     public GameObject ui;
-    public float interactionRange = 5f; // Range within which interaction is possible
+    public float interactionRange = 2f; // Range within which interaction is possible
+    public GameObject smg;
     private bool isInteracting = false; // Track whether the player is currently interacting
-
+    private bool isInteractingWithShadow = false;
     void Update()
     {
         // Check if the player is near the interactable object
@@ -23,7 +24,10 @@ public class PlatformInteractor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 isInteracting = !isInteracting; // Toggle interaction state
-
+                if(isInteractingWithShadow)
+                {
+                    isInteractingWithShadow = false;
+                }
                 InteractableObject interactable = interactableObj.GetComponent<InteractableObject>();
                 if (interactable != null)
                 {
@@ -44,6 +48,24 @@ public class PlatformInteractor : MonoBehaviour
                 {
                     Debug.Log("Ended interaction with object.");
                 }
+            }
+
+            if (isInteracting || isInteractingWithShadow) 
+            {
+                if (Input.GetKeyDown(KeyCode.E)) 
+                {
+                    // disable interactable gameobject
+                    interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
+                    isInteractingWithShadow = !isInteractingWithShadow;
+                    smg.GetComponent<ShadowMeshGenerator>().ShadowCatch();
+                }
+            }
+
+            if (isInteractingWithShadow)
+            {
+                // enable shadow gameobject to interactable
+                interactableObj = GameObject.Find("Generated Shadow Mesh");
+                interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
             }
         }
         else
