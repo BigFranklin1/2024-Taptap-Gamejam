@@ -163,7 +163,7 @@ public class ShadowMeshGenerator : MonoBehaviour
         mesh.RecalculateBounds();
 
         if (existingShadowMesh != null)
-            Destroy(existingShadowMesh);
+            existingShadowMesh.GetComponent<Destroyer>().StartDissolve();
 
         existingShadowMesh = new GameObject("Generated Shadow Mesh");
         existingShadowMesh.transform.localPosition = position;
@@ -182,5 +182,6 @@ public class ShadowMeshGenerator : MonoBehaviour
         //existingShadowMesh.GetComponent<PlatformInteractor>().playerManager = platform.GetComponent<PlatformInteractor>().playerManager;
         //existingShadowMesh.GetComponent<PlatformInteractor>().ui = platform.GetComponent<PlatformInteractor>().ui;
 
+        existingShadowMesh.AddComponent<Destroyer>();
     }
 }
