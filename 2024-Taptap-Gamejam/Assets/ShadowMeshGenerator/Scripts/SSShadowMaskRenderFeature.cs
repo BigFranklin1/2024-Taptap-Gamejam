@@ -46,8 +46,12 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
             context.DrawRenderers(renderingData.cullResults, ref drawingSettings, ref filteringSettings);
             context.Submit();
 
+            context.ExecuteCommandBuffer(cmd);
+            cmd.Clear();
+
             fence = cmd.CreateGraphicsFence(GraphicsFenceType.AsyncQueueSynchronisation, SynchronisationStageFlags.PixelProcessing);
 
+            context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
 
             OnRenderPassComplete(context);
