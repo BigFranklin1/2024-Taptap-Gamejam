@@ -42,10 +42,10 @@ public class ShadowMeshGenerator : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.E))
         //{
-            //if (shadowMaskRenderFeature != null)
-            //{
-            //    shadowMaskRenderFeature.EnableShadowCatching();
-            //}
+        //    if (shadowMaskRenderFeature != null)
+        //    {
+        //        shadowMaskRenderFeature.EnableShadowCatching();
+        //    }
         //}
     }
     public void ShadowCatch() 
@@ -163,15 +163,14 @@ public class ShadowMeshGenerator : MonoBehaviour
         mesh.RecalculateBounds();
 
         if (existingShadowMesh != null)
-            existingShadowMesh.GetComponent<Destroyer>().StartDissolve();
+            existingShadowMesh.GetComponent<ShadowMeshController>().Destroy();
 
         existingShadowMesh = new GameObject("Generated Shadow Mesh");
         existingShadowMesh.transform.localPosition = position;
         existingShadowMesh.AddComponent<MeshFilter>().mesh = mesh;
-        existingShadowMesh.AddComponent<MeshRenderer>().material = new Material(Shader.Find("Shader Graphs/GeneratedShadowMesh"));
         existingShadowMesh.AddComponent<MeshCollider>().sharedMesh = mesh;
-
         existingShadowMesh.AddComponent<InteractableObject>();
+        existingShadowMesh.AddComponent<ShadowMeshController>().Appear(mesh);
 
         //existingShadowMesh.AddComponent<Rigidbody>().mass = 0.0f;
         //existingShadowMesh.AddComponent<PlatformInteractor>();
@@ -181,7 +180,5 @@ public class ShadowMeshGenerator : MonoBehaviour
         //existingShadowMesh.GetComponent<PlatformInteractor>().playerObj = platform.GetComponent<PlatformInteractor>().playerObj;
         //existingShadowMesh.GetComponent<PlatformInteractor>().playerManager = platform.GetComponent<PlatformInteractor>().playerManager;
         //existingShadowMesh.GetComponent<PlatformInteractor>().ui = platform.GetComponent<PlatformInteractor>().ui;
-
-        existingShadowMesh.AddComponent<Destroyer>();
     }
 }
