@@ -19,12 +19,12 @@ Shader "Unlit/ShadowMesh"
             ZTest LEqual
             ZWrite Off
 
-            Stencil
-            {
-                Ref 1
-                Comp Always
-                Pass Replace
-            }
+            // Stencil
+            // {
+            //     Ref 1
+            //     Comp Always
+            //     Pass Replace
+            // }
 
             HLSLPROGRAM
             #pragma vertex vert

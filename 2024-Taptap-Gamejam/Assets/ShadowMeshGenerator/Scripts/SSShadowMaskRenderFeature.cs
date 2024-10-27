@@ -15,20 +15,20 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
         private ShaderTagId shaderTagId;
         private FilteringSettings filteringSettings;
 
-        private RTHandle pointsRTHandle;
+        //private RTHandle pointsRTHandle;
         private ComputeShader shadowPointsExtractionShader;
         private ComputeBuffer pointBuffer;
         private ComputeBuffer pointCountBuffer;
         private GraphicsFence fence;
         private ShadowMeshGenerator shadowMeshGenerator;
 
-        public ShadowMaskRenderPass(RTHandle maskRTHandle, RTHandle pointsRTHandle, ComputeShader shadowPointsExtractionShader)
+        public ShadowMaskRenderPass(RTHandle maskRTHandle, ComputeShader shadowPointsExtractionShader)
         {
             this.maskRTHandle = maskRTHandle;
             this.shaderTagId = new ShaderTagId("SSShadowMask");
             this.filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
 
-            this.pointsRTHandle = pointsRTHandle;
+            //this.pointsRTHandle = pointsRTHandle;
             this.shadowPointsExtractionShader = shadowPointsExtractionShader;
         }
 
@@ -126,7 +126,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
             int kernelHandle = this.shadowPointsExtractionShader.FindKernel("CSShadowPointsExtraction");
 
             cmd.SetComputeTextureParam(this.shadowPointsExtractionShader, kernelHandle, "Input", this.maskRTHandle.rt);
-            cmd.SetComputeTextureParam(this.shadowPointsExtractionShader, kernelHandle, "Result", this.pointsRTHandle.rt);
+            //cmd.SetComputeTextureParam(this.shadowPointsExtractionShader, kernelHandle, "Result", this.pointsRTHandle.rt);
             cmd.SetComputeBufferParam(this.shadowPointsExtractionShader, kernelHandle, "ShadowPoints", this.pointBuffer);
 
             cmd.DispatchCompute(this.shadowPointsExtractionShader, kernelHandle, this.maskRTHandle.rt.width / 8, this.maskRTHandle.rt.height / 8, 1);
@@ -146,28 +146,28 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
     }
 
     public ComputeShader shadowPointsExtractionShader;
-    public RenderTexture SSShadowMaskRenderTexture;
-    public RenderTexture SSShadowPointsRenderTexture;
+    //public RenderTexture SSShadowMaskRenderTexture;
+    //public RenderTexture SSShadowPointsRenderTexture;
 
     private bool isEnabled = false;
     private ShadowMaskRenderPass renderPass;
     private RTHandle maskRTHandle;
-    private RTHandle pointsRTHandle; // for visualization only
+    //private RTHandle pointsRTHandle; // for visualization only
 
     public override void Create()
     {
-        // GraphicsFormat rtColorFormat = GraphicsFormat.R16G16B16A16_SFloat;
-        // GraphicsFormat rtColorFormat = GraphicsFormat.R32G32B32A32_SFloat;
+        GraphicsFormat rtColorFormat = GraphicsFormat.R16G16B16A16_SFloat;
+        //GraphicsFormat rtColorFormat = GraphicsFormat.R32G32B32A32_SFloat;
 
-        //this.maskRTHandle = RTHandles.Alloc(
-        //    width: Screen.width,
-        //    height: Screen.height,
-        //    depthBufferBits: DepthBits.None,
-        //    colorFormat: rtColorFormat,
-        //    enableRandomWrite: true,
-        //    name: "SSShadowMask"
-        //);
-        this.maskRTHandle = RTHandles.Alloc(SSShadowMaskRenderTexture);
+        this.maskRTHandle = RTHandles.Alloc(
+            width: (int)(Screen.width * 1.5f),
+            height: (int)(Screen.height * 1.5f),
+            depthBufferBits: DepthBits.None,
+            colorFormat: rtColorFormat,
+            enableRandomWrite: true,
+            name: "SSShadowMask"
+        );
+        //this.maskRTHandle = RTHandles.Alloc(SSShadowMaskRenderTexture);
 
         //this.pointsRTHandle = RTHandles.Alloc(
         //    width: Screen.width,
@@ -177,9 +177,9 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
         //    enableRandomWrite: true,
         //    name: "SSShadowPoints"
         //);
-        this.pointsRTHandle = RTHandles.Alloc(SSShadowPointsRenderTexture);
+        //this.pointsRTHandle = RTHandles.Alloc(SSShadowPointsRenderTexture);
 
-        this.renderPass = new ShadowMaskRenderPass(this.maskRTHandle, this.pointsRTHandle, this.shadowPointsExtractionShader);
+        this.renderPass = new ShadowMaskRenderPass(this.maskRTHandle, this.shadowPointsExtractionShader);
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
