@@ -22,9 +22,9 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
         private GraphicsFence fence;
         private ShadowMeshGenerator shadowMeshGenerator;
 
-        public ShadowMaskRenderPass(RTHandle maskRTHandle, ComputeShader shadowPointsExtractionShader)
+        public ShadowMaskRenderPass(ComputeShader shadowPointsExtractionShader)
         {
-            this.maskRTHandle = maskRTHandle;
+            //this.maskRTHandle = maskRTHandle;
             this.shaderTagId = new ShaderTagId("SSShadowMask");
             this.filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
 
@@ -34,6 +34,29 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
+            if (this.maskRTHandle == null)
+            {
+                this.maskRTHandle = RTHandles.Alloc(
+                    width: (int)(Screen.width * 1.5f),
+                    height: (int)(Screen.height * 1.5f),
+                    depthBufferBits: DepthBits.None,
+                    colorFormat: GraphicsFormat.R16G16B16A16_SFloat,
+                    enableRandomWrite: true,
+                    name: "SSShadowMask"
+                );
+            }
+            else if (this.maskRTHandle.rt.width != (int)(Screen.width * 1.5f) || this.maskRTHandle.rt.height != (int)(Screen.height * 1.5f))
+            {
+                this.maskRTHandle.Release();
+                this.maskRTHandle = RTHandles.Alloc(
+                    width: (int)(Screen.width * 1.5f),
+                    height: (int)(Screen.height * 1.5f),
+                    depthBufferBits: DepthBits.None,
+                    colorFormat: GraphicsFormat.R16G16B16A16_SFloat,
+                    enableRandomWrite: true,
+                    name: "SSShadowMask"
+                );
+            }
             ConfigureTarget(this.maskRTHandle);
             ConfigureClear(ClearFlag.All, Color.clear);
         }
@@ -143,6 +166,11 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
             this.pointBuffer?.Release();
             this.pointCountBuffer?.Release();
         }
+
+        public void Cleanup()
+        {
+            this.maskRTHandle?.Release();
+        }
     }
 
     public ComputeShader shadowPointsExtractionShader;
@@ -159,27 +187,10 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
         GraphicsFormat rtColorFormat = GraphicsFormat.R16G16B16A16_SFloat;
         //GraphicsFormat rtColorFormat = GraphicsFormat.R32G32B32A32_SFloat;
 
-        this.maskRTHandle = RTHandles.Alloc(
-            width: (int)(Screen.width * 1.5f),
-            height: (int)(Screen.height * 1.5f),
-            depthBufferBits: DepthBits.None,
-            colorFormat: rtColorFormat,
-            enableRandomWrite: true,
-            name: "SSShadowMask"
-        );
         //this.maskRTHandle = RTHandles.Alloc(SSShadowMaskRenderTexture);
-
-        //this.pointsRTHandle = RTHandles.Alloc(
-        //    width: Screen.width,
-        //    height: Screen.height,
-        //    depthBufferBits: DepthBits.None,
-        //    colorFormat: rtColorFormat,
-        //    enableRandomWrite: true,
-        //    name: "SSShadowPoints"
-        //);
         //this.pointsRTHandle = RTHandles.Alloc(SSShadowPointsRenderTexture);
 
-        this.renderPass = new ShadowMaskRenderPass(this.maskRTHandle, this.shadowPointsExtractionShader);
+        this.renderPass = new ShadowMaskRenderPass(this.shadowPointsExtractionShader);
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
@@ -197,6 +208,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
 
     void OnDisable()
     {
+        this.renderPass.Cleanup();
         //if (maskRTHandle != null)
         //{
         //    maskRTHandle.Release();
