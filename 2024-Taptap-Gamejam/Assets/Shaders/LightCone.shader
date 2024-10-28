@@ -8,7 +8,7 @@ Shader "Unlit/LightCone"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "RenderPipeline"="UniversalPipeline" "Queue"="Transparent"}
+        Tags { "RenderType"="Transparent" "RenderPipeline"="UniversalPipeline" "Queue"="Transparent+1"}
         LOD 100
 
         Pass
