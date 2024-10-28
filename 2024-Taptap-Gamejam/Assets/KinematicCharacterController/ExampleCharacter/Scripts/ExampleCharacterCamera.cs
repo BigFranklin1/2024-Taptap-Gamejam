@@ -111,8 +111,8 @@ namespace KinematicCharacterController.Examples
                 // PlanarDirection =  rotationFromInput * PlanarDirection;
                 PlanarDirection =  PlanarDirection;
                 // Debug.Log("PlanarDirection: " + PlanarDirection + " FollowTransformUp" + FollowTransform.up);
-                PlanarDirection = Vector3.Cross(FollowTransform.up, Vector3.Cross(PlanarDirection, FollowTransform.up));
-                Quaternion planarRot = Quaternion.LookRotation(PlanarDirection, FollowTransform.up);
+                PlanarDirection = Vector3.Cross(Vector3.up, Vector3.Cross(PlanarDirection, Vector3.up));
+                Quaternion planarRot = Quaternion.LookRotation(PlanarDirection, Vector3.up);
 
                 _targetVerticalAngle -= (rotationInput.y * RotationSpeed);
                 _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
