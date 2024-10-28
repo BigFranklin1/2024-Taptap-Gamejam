@@ -20,68 +20,55 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    // 处理对象旋转
-    //void HandleRotation()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        isDragging = true;
-    //        lastMousePosition = Input.mousePosition;
-    //    }
-
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-    //        isDragging = false;
-    //    }
-
-    //    if (isDragging)
-    //    {
-    //        // 获取当前鼠标位置和上一次鼠标位置之间的差值
-    //        Vector3 deltaMouse = Input.mousePosition - lastMousePosition;
-
-    //        // X 轴旋转 (上下移动控制绕 X 轴旋转)
-    //        float rotationX = deltaMouse.y * rotationSpeed * Time.deltaTime;
-
-    //        // Y 轴旋转 (左右移动控制绕 Y 轴旋转)
-    //        float rotationY = -deltaMouse.x * rotationSpeed * Time.deltaTime;
-
-    //        // 旋转物体（限制 Z 轴旋转，防止翻转）
-    //        transform.rotation *= Quaternion.Euler(rotationX, rotationY, 0);
-
-    //        // 更新最后的鼠标位置
-    //        lastMousePosition = Input.mousePosition;
-    //    }
-    //}
-
+    // void HandleRotation()
+    // {
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         isDragging = true;
+    //         lastMousePosition = Input.mousePosition;
+    //     }
+    //
+    //     if (Input.GetMouseButtonUp(0))
+    //     {
+    //         isDragging = false;
+    //     }
+    //
+    //     if (isDragging)
+    //     {
+    //         // 获取当前鼠标位置和上一次鼠标位置之间的差值
+    //         Vector3 deltaMouse = Input.mousePosition - lastMousePosition;
+    //
+    //         // X 轴旋转 (上下移动控制绕 X 轴旋转)
+    //         float rotationX = deltaMouse.y * rotationSpeed * Time.deltaTime;
+    //
+    //         // Y 轴旋转 (左右移动控制绕 Y 轴旋转)
+    //         float rotationY = -deltaMouse.x * rotationSpeed * Time.deltaTime;
+    //
+    //         // 旋转物体（限制 Z 轴旋转，防止翻转）
+    //         transform.rotation *= Quaternion.Euler(rotationX, rotationY, 0);
+    //
+    //         // 更新最后的鼠标位置
+    //         lastMousePosition = Input.mousePosition;
+    //     }
+    // }
     void HandleRotation()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 当按下Z键时，物体沿X轴顺时针旋转
+        if (Input.GetKey(KeyCode.Z))
         {
-            isDragging = true;
-            lastMousePosition = Input.mousePosition;
+            transform.Rotate(Vector3.right * (rotationSpeed * Time.deltaTime), Space.Self);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        // 当按下X键时，物体沿Y轴顺时针旋转
+        if (Input.GetKey(KeyCode.X))
         {
-            isDragging = false;
+            transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime), Space.Self);
         }
 
-        if (isDragging)
+        // 当按下C键时，物体沿Z轴顺时针旋转
+        if (Input.GetKey(KeyCode.C))
         {
-            // 获取当前鼠标位置和上一次鼠标位置之间的差值
-            Vector3 deltaMouse = Input.mousePosition - lastMousePosition;
-
-            // X 轴旋转 (上下移动控制绕 X 轴旋转)
-            float rotationX = deltaMouse.y * rotationSpeed * Time.deltaTime;
-
-            // Y 轴旋转 (左右移动控制绕 Y 轴旋转)
-            float rotationY = -deltaMouse.x * rotationSpeed * Time.deltaTime;
-
-            // 旋转物体（限制 Z 轴旋转，防止翻转）
-            transform.rotation *= Quaternion.Euler(rotationX, rotationY, 0);
-
-            // 更新最后的鼠标位置
-            lastMousePosition = Input.mousePosition;
+            transform.Rotate(Vector3.forward * (rotationSpeed * Time.deltaTime), Space.Self);
         }
     }
 
