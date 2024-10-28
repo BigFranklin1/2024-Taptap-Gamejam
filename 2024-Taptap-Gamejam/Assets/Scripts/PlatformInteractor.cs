@@ -16,6 +16,8 @@ public class PlatformInteractor : MonoBehaviour
     private bool isInteracting = false; // Track whether the player is currently interacting
     private bool isInteractingWithShadow = false;
     public bool isEnabled;
+    public AudioSource shadowSound;      // 按钮触发音效
+
     public PlatformActiveDetection standArea;
     void Update()
     {
@@ -68,6 +70,7 @@ public class PlatformInteractor : MonoBehaviour
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
                     isInteractingWithShadow = !isInteractingWithShadow;
                     smg.GetComponent<ShadowMeshGenerator>().ShadowCatch();
+                    PlayShadowSound();
                 }
                 
                 GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
@@ -106,6 +109,13 @@ public class PlatformInteractor : MonoBehaviour
         else
         {
             ui.SetActive(false);
+        }
+    }
+    private void PlayShadowSound()
+    {
+        if (shadowSound != null)
+        {
+            shadowSound.Play();
         }
     }
 }
