@@ -63,7 +63,7 @@ public class ShadowMeshController : MonoBehaviour
             if (appearProgress <= 1.25)
             {
                 // emissionIntensity = 1.0f + 0.35f * easeInOutCubic(appearProgress / 2);
-                emissionIntensity = 1.0f + Mathf.Sin(0.8f * Mathf.PI * appearProgress);
+                emissionIntensity = 1.0f + 5 * Mathf.Sin(0.8f * Mathf.PI * appearProgress);
                 material.SetFloat("_EmissionIntensity", emissionIntensity);
             }
             //else if (appearProgress <= 1.5f)
