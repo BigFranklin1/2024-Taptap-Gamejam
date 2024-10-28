@@ -27,5 +27,5 @@ Material:
     m_Floats:
     - _FadePowerExp: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.9113704, b: 0.5188678, a: 0.23529412}
+    - _Color: {r: 0.918239, g: 0.89381033, b: 0.78252435, a: 0.11764706}
   m_BuildTextureStacks: []
