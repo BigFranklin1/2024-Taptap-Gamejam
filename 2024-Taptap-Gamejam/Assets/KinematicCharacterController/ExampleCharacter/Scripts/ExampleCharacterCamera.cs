@@ -105,7 +105,7 @@ namespace KinematicCharacterController.Examples
                 _targetVerticalAngle -= (rotationInput.y * RotationSpeed);
                 _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
                 // Quaternion verticalRot = Quaternion.Euler(_targetVerticalAngle, 0, 0);
-                Quaternion verticalRot = Quaternion.Euler(45, 0, 0);
+                Quaternion verticalRot = Quaternion.Euler(35, 0, 0);
 
                 Quaternion targetRotation = Quaternion.Slerp(Transform.rotation, planarRot * verticalRot, 1f - Mathf.Exp(-RotationSharpness * deltaTime));
 
