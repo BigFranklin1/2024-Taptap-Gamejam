@@ -17,8 +17,12 @@ public class CharactorRotation : MonoBehaviour
 
     void Update()
     {
-        Move();
-        Animate();
+        if (player.enableInteraction)
+        {
+            Move();
+            Animate();            
+        }
+
     }
 
     void Move()
@@ -28,7 +32,7 @@ public class CharactorRotation : MonoBehaviour
 
         Vector3 movement = new Vector3(-moveHorizontal, 0.0f, -moveVertical);
 
-        if (movement != Vector3.zero && player.enableInteraction)
+        if (movement != Vector3.zero)
         {
             // 计算旋转方向
             Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);

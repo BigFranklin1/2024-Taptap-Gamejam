@@ -20,9 +20,7 @@ public class PlatformInteractor : MonoBehaviour
     public AudioSource shadowSound;      // 按钮触发音效
     public GameObject followPosition;
     public PlatformActiveDetection standArea;
-
-    private Quaternion cameraTransformBackup;
-    private Transform followPointTransformBackup;
+    
     
 
     void Update()
@@ -74,10 +72,6 @@ public class PlatformInteractor : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    // backup camera rot
-                    // cameraTransformBackup = playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation;
-                    GameObject followPointTransformBackupObject = Instantiate(followPosition.gameObject);
-                    followPointTransformBackup = followPointTransformBackupObject.transform;
                     // disable interactable gameobject
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
                     isInteractingWithShadow = !isInteractingWithShadow;
@@ -100,11 +94,9 @@ public class PlatformInteractor : MonoBehaviour
                     isInteractingWithShadow = false;
               
                     // playerManager.GetComponent<MyPlayer>().CameraFollowPoint = GameObject.Find("CameraFollowPoint").transform;
-                    Debug.Log("now CameraFollowPoint: "+  followPointTransformBackup.rotation);
                     playerManager.GetComponent<MyPlayer>().CameraFollowPoint = followPosition.transform;
                     playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 225, 0);
                     playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransform(playerManager.GetComponent<MyPlayer>().CameraFollowPoint);
-                    // playerManager.GetComponent<MyPlayer>().OrbitCamera.SetRotation(cameraTransformBackup);
 
                 }
                 
