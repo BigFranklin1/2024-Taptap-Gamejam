@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Examples;
+using System.ComponentModel;
 
 namespace KinematicCharacterController.Walkthrough.Crouching
 {
@@ -18,9 +19,18 @@ namespace KinematicCharacterController.Walkthrough.Crouching
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
 
+        private bool gameRunning = false;
+
         private void Start()
         {
+            //StartGame();
+        }
+
+        public void StartGame()
+        {
             Cursor.lockState = CursorLockMode.Locked;
+
+            gameRunning = true;
 
             // Tell camera to follow transform
             OrbitCamera.SetFollowTransform(CameraFollowPoint);
@@ -32,10 +42,10 @@ namespace KinematicCharacterController.Walkthrough.Crouching
 
         private void Update()
         {
-            if(enableInteraction){
+            if(enableInteraction && gameRunning){
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Cursor.lockState = CursorLockMode.Locked;
+                    //Cursor.lockState = CursorLockMode.Locked;
                 }
 
                 HandleCharacterInput();
