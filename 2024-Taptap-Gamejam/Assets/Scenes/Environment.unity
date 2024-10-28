@@ -12344,10 +12344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de704872ad78f4458ed6c8cb66cce2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSound: {fileID: 362132843}
+  buttonSound: {fileID: 1424207304}
   targetBlock: {fileID: 1409851923}
-  targetPosition: {x: 0, y: 0, z: 0}
+  targetPosition: {x: 2.8, y: 5.4, z: 11.49}
   moveSpeed: 2
+  targetProp: {fileID: 2069624257}
 --- !u!1001 &362211734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14825,7 +14826,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460560614}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &460560616
 Camera:
   m_ObjectHideFlags: 0
@@ -47785,6 +47786,7 @@ MonoBehaviour:
   targetBlock: {fileID: 1409851923}
   targetPosition: {x: 2.8, y: 5.4, z: 11.49}
   moveSpeed: 2
+  targetProp: {fileID: 2069624257}
 --- !u!64 &1424207306
 MeshCollider:
   m_ObjectHideFlags: 0

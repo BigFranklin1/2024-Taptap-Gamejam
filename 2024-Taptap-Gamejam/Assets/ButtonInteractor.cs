@@ -10,6 +10,7 @@ public class ButtonInteractor : MonoBehaviour
     public Vector3 targetPosition;       // 方块的目标位置
     public float moveSpeed = 2.0f;       // 方块移动的速度
 
+    public GameObject targetProp;        // 目标方块上的可交互物体
     private bool isActivated = false;    // 按钮是否被触发
 
     // 当玩家触碰到按钮时触发
@@ -22,8 +23,17 @@ public class ButtonInteractor : MonoBehaviour
             
             // enable platform
             targetBlock.GetComponent<PlatformInteractor>().isEnabled = true;
+            
+            // enable interactable obj on the platform
+            targetProp.SetActive(true);
+
             StartCoroutine(MoveBlock());
         }
+    }
+
+    void Start()
+    {
+        targetProp.SetActive(false);
     }
 
     // 播放按钮的音效
