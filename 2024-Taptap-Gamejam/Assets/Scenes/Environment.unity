@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17498067, g: 0.21889868, b: 0.30119056, a: 1}
+  m_IndirectSpecularColor: {r: 0.17497955, g: 0.21889696, b: 0.3011882, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13968,7 +13968,7 @@ GameObject:
   - component: {fileID: 452947850}
   - component: {fileID: 452947852}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14023,8 +14023,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289454836
+  m_fontColor: {r: 0.95686275, g: 0.8862745, b: 0.67058825, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14200,7 +14200,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 250
+  m_Intensity: 150
   m_Range: 50
   m_SpotAngle: 58.010178
   m_InnerSpotAngle: 47.54116
@@ -54087,7 +54087,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -62915,7 +62915,7 @@ GameObject:
   - component: {fileID: 1942240554}
   - component: {fileID: 1942240553}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62970,8 +62970,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289454836
+  m_fontColor: {r: 0.95686275, g: 0.8862745, b: 0.67058825, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -64390,8 +64390,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289454836
+  m_fontColor: {r: 0.95686275, g: 0.8862745, b: 0.67058825, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
