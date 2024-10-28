@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Walkthrough.Crouching;
+using UnityEngine.Rendering.Universal;
+
 public class PlatformInteractor : MonoBehaviour
 {
     public GameObject interactableObj; // The object to interact with
@@ -51,7 +53,8 @@ public class PlatformInteractor : MonoBehaviour
                 }
             }
 
-            if (isInteracting || isInteractingWithShadow) 
+            // Debug.Log("isInteracting:"+isInteracting+" isInteractingWithShadows:"+isInteractingWithShadow);
+            if (isInteracting && !isInteractingWithShadow) 
             {
                 if (Input.GetKeyDown(KeyCode.Space)) 
                 {
@@ -60,8 +63,30 @@ public class PlatformInteractor : MonoBehaviour
                     isInteractingWithShadow = !isInteractingWithShadow;
                     smg.GetComponent<ShadowMeshGenerator>().ShadowCatch();
                 }
+                
+                GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
+                if (shadowMesh != null)
+                {
+                    // shadowMesh.GetComponent<Rigidbody>().isKinematic = true;
+                    // shadowMesh.GetComponent<InteractableObject>().enableInteraction = true;
+                }                    
             }
+            else if (isInteracting && isInteractingWithShadow) 
+            {
+                // Release gameobject
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
+                    if (shadowMesh != null)
+                    {
+                        shadowMesh.GetComponent<Rigidbody>().isKinematic = false;
+                        shadowMesh.GetComponent<InteractableObject>().enableInteraction = false;
+                    }                    
+                    isInteractingWithShadow = false;
+                }
 
+            }
+            
             if (isInteractingWithShadow)
             {
                 // enable shadow gameobject to interactable
