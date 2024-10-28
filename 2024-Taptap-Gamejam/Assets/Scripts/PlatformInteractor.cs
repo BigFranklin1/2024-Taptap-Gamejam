@@ -13,11 +13,12 @@ public class PlatformInteractor : MonoBehaviour
     public GameObject smg;
     private bool isInteracting = false; // Track whether the player is currently interacting
     private bool isInteractingWithShadow = false;
+    public PlatformActiveDetection standArea;
     void Update()
     {
         // Check if the player is near the interactable object
-        float distanceToInteractable = Vector3.Distance(playerObj.transform.position, transform.position);
-        if (distanceToInteractable <= interactionRange)
+        //float distanceToInteractable = Vector3.Distance(playerObj.transform.position, transform.position);
+        if (standArea.triggered)
         {
             ui.SetActive(true);
             // If player is within range and presses the 'E' key
@@ -65,7 +66,10 @@ public class PlatformInteractor : MonoBehaviour
             {
                 // enable shadow gameobject to interactable
                 interactableObj = GameObject.Find("Generated Shadow Mesh");
-                interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
+                if (interactableObj != null)
+                {
+                    interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
+                }
             }
         }
         else
