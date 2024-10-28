@@ -17,27 +17,27 @@ namespace KinematicCharacterController.Examples
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
 
-        private void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-
-            // Tell camera to follow transform
-            CharacterCamera.SetFollowTransform(Character.CameraFollowPoint);
-
-            // Ignore the character's collider(s) for camera obstruction checks
-            CharacterCamera.IgnoredColliders.Clear();
-            CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
-        }
-
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-
-            HandleCharacterInput();
-        }
+        // private void Start()
+        // {
+        //     Cursor.lockState = CursorLockMode.Locked;
+        //
+        //     // Tell camera to follow transform
+        //     CharacterCamera.SetFollowTransform(Character.CameraFollowPoint);
+        //
+        //     // Ignore the character's collider(s) for camera obstruction checks
+        //     CharacterCamera.IgnoredColliders.Clear();
+        //     CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
+        // }
+        //
+        // private void Update()
+        // {
+        //     if (Input.GetMouseButtonDown(0))
+        //     {
+        //         Cursor.lockState = CursorLockMode.Locked;
+        //     }
+        //
+        //     HandleCharacterInput();
+        // }
 
         private void LateUpdate()
         {

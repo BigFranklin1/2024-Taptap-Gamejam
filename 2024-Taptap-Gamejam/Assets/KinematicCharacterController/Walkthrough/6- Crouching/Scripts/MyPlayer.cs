@@ -33,6 +33,7 @@ namespace KinematicCharacterController.Walkthrough.Crouching
             gameRunning = true;
 
             // Tell camera to follow transform
+            Debug.Log("initial follow point" + CameraFollowPoint.rotation);
             OrbitCamera.SetFollowTransform(CameraFollowPoint);
 
             // Ignore the character's collider(s) for camera obstruction checks
@@ -42,6 +43,8 @@ namespace KinematicCharacterController.Walkthrough.Crouching
 
         private void Update()
         {
+            Debug.Log("initial follow point" + CameraFollowPoint.rotation);
+
             if(enableInteraction && gameRunning){
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -77,7 +80,7 @@ namespace KinematicCharacterController.Walkthrough.Crouching
 #endif
 
             // Apply inputs to the camera
-            OrbitCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
+            OrbitCamera.UpdateWithInput(Time.deltaTime, scrollInput, Vector3.zero);
 
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))

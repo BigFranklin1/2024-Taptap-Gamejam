@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +18,13 @@ public class PlatformInteractor : MonoBehaviour
     private bool isInteractingWithShadow = false;
     public bool isEnabled;
     public AudioSource shadowSound;      // 按钮触发音效
-
+    public GameObject followPosition;
     public PlatformActiveDetection standArea;
+
+    private Quaternion cameraTransformBackup;
+    private Transform followPointTransformBackup;
+    
+
     void Update()
     {
         if (!isEnabled)
@@ -34,6 +40,8 @@ public class PlatformInteractor : MonoBehaviour
             // If player is within range and presses the 'E' key
             if (Input.GetKeyDown(KeyCode.R))
             {
+                // Debug.Log("CameraFollowPoint: "+  playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation);
+
                 isInteracting = !isInteracting; // Toggle interaction state
                 if(isInteractingWithShadow)
                 {
@@ -64,23 +72,20 @@ public class PlatformInteractor : MonoBehaviour
             // Debug.Log("isInteracting:"+isInteracting+" isInteractingWithShadows:"+isInteractingWithShadow);
             if (isInteracting && !isInteractingWithShadow) 
             {
-                if (Input.GetKeyDown(KeyCode.Space)) 
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    // backup camera rot
+                    // cameraTransformBackup = playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation;
+                    GameObject followPointTransformBackupObject = Instantiate(followPosition.gameObject);
+                    followPointTransformBackup = followPointTransformBackupObject.transform;
                     // disable interactable gameobject
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
                     isInteractingWithShadow = !isInteractingWithShadow;
                     smg.GetComponent<ShadowMeshGenerator>().ShadowCatch();
                     PlayShadowSound();
                 }
-                
-                GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
-                if (shadowMesh != null)
-                {
-                    // shadowMesh.GetComponent<Rigidbody>().isKinematic = true;
-                    // shadowMesh.GetComponent<InteractableObject>().enableInteraction = true;
-                }                    
             }
-            else if (isInteracting && isInteractingWithShadow) 
+            else if (isInteracting && isInteractingWithShadow)
             {
                 // Release gameobject
                 if (Input.GetKeyDown(KeyCode.Space))
@@ -90,9 +95,20 @@ public class PlatformInteractor : MonoBehaviour
                     {
                         shadowMesh.GetComponent<Rigidbody>().isKinematic = false;
                         shadowMesh.GetComponent<InteractableObject>().enableInteraction = false;
-                    }                    
+                    }
+
                     isInteractingWithShadow = false;
+              
+                    // playerManager.GetComponent<MyPlayer>().CameraFollowPoint = GameObject.Find("CameraFollowPoint").transform;
+                    Debug.Log("now CameraFollowPoint: "+  followPointTransformBackup.rotation);
+                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint = followPosition.transform;
+                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 225, 0);
+                    playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransform(playerManager.GetComponent<MyPlayer>().CameraFollowPoint);
+                    // playerManager.GetComponent<MyPlayer>().OrbitCamera.SetRotation(cameraTransformBackup);
+
                 }
+                
+                
 
             }
             
@@ -103,8 +119,11 @@ public class PlatformInteractor : MonoBehaviour
                 if (interactableObj != null)
                 {
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
+                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint = interactableObj.transform;
+                    playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransformInverseDirection(interactableObj.transform);
                 }
             }
+
         }
         else
         {

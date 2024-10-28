@@ -79,6 +79,18 @@ namespace KinematicCharacterController.Examples
             FollowTransform = t;
             PlanarDirection = FollowTransform.forward;
             _currentFollowPosition = FollowTransform.position;
+            // Debug.Log("PlanarDirection"+t.forward);
+        }
+        public void SetFollowTransformInverseDirection(Transform t)
+        {
+            FollowTransform = t;
+            PlanarDirection = -FollowTransform.forward;
+            _currentFollowPosition = FollowTransform.position;
+        }
+
+        public void SetRotation(Quaternion q)
+        {
+            Transform.rotation = q;
         }
 
         public void UpdateWithInput(float deltaTime, float zoomInput, Vector3 rotationInput)
@@ -98,7 +110,7 @@ namespace KinematicCharacterController.Examples
                 Quaternion rotationFromInput = Quaternion.Euler(FollowTransform.up * (rotationInput.x * RotationSpeed));
                 // PlanarDirection =  rotationFromInput * PlanarDirection;
                 PlanarDirection =  PlanarDirection;
-
+                // Debug.Log("PlanarDirection: " + PlanarDirection + " FollowTransformUp" + FollowTransform.up);
                 PlanarDirection = Vector3.Cross(FollowTransform.up, Vector3.Cross(PlanarDirection, FollowTransform.up));
                 Quaternion planarRot = Quaternion.LookRotation(PlanarDirection, FollowTransform.up);
 
