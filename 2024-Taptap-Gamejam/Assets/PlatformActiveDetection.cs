@@ -19,11 +19,20 @@ public class PlatformActiveDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        triggered = true;
+        if (other.CompareTag("Player"))
+        {
+            triggered = true;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        triggered = false;
+        if (other.CompareTag("Player"))
+        {
+            triggered = false;
+        }
+
+        
     }
 }
