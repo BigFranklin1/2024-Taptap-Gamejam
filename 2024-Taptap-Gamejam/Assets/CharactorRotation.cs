@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using KinematicCharacterController.Walkthrough.Crouching;
 using UnityEngine;
 
 public class CharactorRotation : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    // public AnimationClip waveAnimation;
-    // public AnimationClip runAnimation;
-    // public AnimationClip idleAnimation;
+    public MyPlayer player;
     private Animator animator;
 
     void Start()
@@ -29,7 +28,7 @@ public class CharactorRotation : MonoBehaviour
 
         Vector3 movement = new Vector3(-moveHorizontal, 0.0f, -moveVertical);
 
-        if (movement != Vector3.zero)
+        if (movement != Vector3.zero && player.enableInteraction)
         {
             // 计算旋转方向
             Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
