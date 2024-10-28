@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.175342, g: 0.21938106, b: 0.30169758, a: 1}
+  m_IndirectSpecularColor: {r: 0.17533876, g: 0.21937698, b: 0.3016913, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -173,16 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 943426268}
 --- !u!65 &2073445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1224,16 +1214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 67468086}
 --- !u!65 &19965083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2101,16 +2081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 556462892}
 --- !u!65 &48056390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2279,6 +2249,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &56712610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56712607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc836e96fc2284f4dad21c35400d4b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  waveAnimation: {fileID: 0}
+  runAnimation: {fileID: 0}
+  idleAnimation: {fileID: 0}
 --- !u!1001 &57617453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3015,16 +3001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 6}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 586679224}
 --- !u!65 &69331307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3185,16 +3161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 264202208}
 --- !u!65 &80960339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6513,16 +6479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 4, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 717508244}
 --- !u!65 &187667364
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9364,16 +9320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1780284392}
 --- !u!65 &290417700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9445,16 +9391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 5}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2008652638}
 --- !u!65 &295956735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9643,16 +9579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 5}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1635205081}
 --- !u!65 &300068896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10133,7 +10059,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 59042e5ef9255a8439a40d6e481a64e5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2223639932434330405, guid: 59042e5ef9255a8439a40d6e481a64e5,
         type: 3}
@@ -10317,16 +10243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 576521629}
 --- !u!65 &331642528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10751,16 +10667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1960803512}
 --- !u!65 &337745329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11436,16 +11342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 47517870
-  _ruleID: -1
-  _tileName: Ladder
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 1, z: 3}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 909894480}
 --- !u!65 &358340627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12315,16 +12211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2056029552}
 --- !u!65 &407449457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12769,16 +12655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1259787325}
 --- !u!65 &415931181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12850,16 +12726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1355974648}
 --- !u!65 &418422445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13015,16 +12881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 4}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 968770213}
 --- !u!65 &431490760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14451,16 +14307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2141298673}
 --- !u!65 &476091826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14871,16 +14717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -943291725
-  _ruleID: -1
-  _tileName: Plank
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 3, z: 5}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1045987445}
 --- !u!65 &480117023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14958,16 +14794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1440612494}
 --- !u!65 &483029625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15184,12 +15010,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484609253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc836e96fc2284f4dad21c35400d4b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  waveAnimation: {fileID: 0}
+  runAnimation: {fileID: 0}
+  idleAnimation: {fileID: 0}
 --- !u!1001 &487153931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16045,16 +15874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 5}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 869951958}
 --- !u!65 &513674941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16296,6 +16115,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  waveAnimation: {fileID: -203655887218126122, guid: 59042e5ef9255a8439a40d6e481a64e5,
+    type: 3}
+  runAnimation: {fileID: -203655887218126122, guid: 4334c8d64e77b9846aa27a98670f8ce6,
+    type: 3}
+  idleAnimation: {fileID: -203655887218126122, guid: e51ff0645ad7d9248a40e82a11d2311f,
+    type: 3}
 --- !u!1 &528696701
 GameObject:
   m_ObjectHideFlags: 0
@@ -17639,35 +17464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24923d3a4e93ae34394654345257543c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSize: 1
-  Height: 5
-  Width: 10
-  Unit: 1
-  TileLayers:
-  - {fileID: 1702510461}
-  - {fileID: 815637693}
-  - {fileID: 1053951168}
-  _LayerIndex: 0
-  outlineGridColor:
-    r: 0.811
-    g: 0.811
-    b: 0.811
-    a: 0.686
-  red:
-    r: 1
-    g: 0
-    b: 0
-    a: 0.686
-  green:
-    r: 0.172
-    g: 1
-    b: 0
-    a: 0.686
-  blue:
-    r: 0
-    g: 0.568
-    b: 1
-    a: 0.686
 --- !u!4 &561530124
 Transform:
   m_ObjectHideFlags: 0
@@ -18364,16 +18160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 6}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 563111913}
 --- !u!65 &585743793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20047,16 +19833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1347522074}
 --- !u!65 &635391715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20742,16 +20518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1634675644}
 --- !u!65 &646479592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21051,17 +20817,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e51ff0645ad7d9248a40e82a11d2311f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e51ff0645ad7d9248a40e82a11d2311f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e51ff0645ad7d9248a40e82a11d2311f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e51ff0645ad7d9248a40e82a11d2311f,
         type: 3}
@@ -21118,6 +20884,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e51ff0645ad7d9248a40e82a11d2311f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21126,6 +20897,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 56712609}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e51ff0645ad7d9248a40e82a11d2311f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 56712610}
   m_SourcePrefab: {fileID: 100100000, guid: e51ff0645ad7d9248a40e82a11d2311f, type: 3}
 --- !u!1 &661064803
 GameObject:
@@ -21751,10 +21526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -943291725
-  BakedParent: {fileID: 0}
-  _childCount: 4
-  _bakeCount: 0
 --- !u!1001 &686727273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22863,16 +22634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 533487495}
 --- !u!65 &726743774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23525,16 +23286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2038356509}
 --- !u!65 &743365135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24720,16 +24471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 4, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 189463923}
 --- !u!65 &773058743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25599,16 +25340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2113852652}
 --- !u!65 &795433266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26258,16 +25989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 4, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1036166374}
 --- !u!65 &809494385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26624,16 +26345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 4, y: 2, z: 6}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 477695565}
 --- !u!65 &812843959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26790,38 +26501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962878b2c93e50544bf2e4e4c234a454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayerName: A second layer
-  Group: {fileID: 0}
-  _activeTileID: -1
-  _Grid: {fileID: 0}
-  _NodesKeys:
-  - {x: 7, y: 2, z: 6}
-  - {x: 3, y: 1, z: 2}
-  _NodesValues:
-  - {Layer: {fileID: 815637693}, InternalPosition: {x: 7, y: 2, z: 6}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 1562671485}, _instance: {fileID: 1562671484}, _group: TileGroup_Autotiles3D_Castle, _tileName: Fence, _tileID: -554100646, _ruleID: -1}
-  - {Layer: {fileID: 815637693}, InternalPosition: {x: 3, y: 1, z: 2}, LocalRotation: {x: -0,
-      y: -0.7071069, z: -0, w: -0.70710665}, _block: {fileID: 834548334}, _instance: {fileID: 834548333}, _group: TileGroup_Autotiles3D_Castle, _tileName: Fence, _tileID: -554100646, _ruleID: -1}
-  _AnchorKeys: 5a18f9de
-  _AnchorValues:
-  - {fileID: 1403972567}
-  LoadedGroups:
-  - {fileID: 11400000, guid: 1edde58f529342444af1e40ece72ce29, type: 2}
-  - {fileID: 11400000, guid: 16834233af9c1f54183b7534cf3231be, type: 2}
-  - {fileID: 11400000, guid: c734f5e481fe5654ea7150f7739985fb, type: 2}
-  - {fileID: 11400000, guid: 086471ca33d4b294b87b2cecdd98e4fd, type: 2}
-  - {fileID: 11400000, guid: 87b8d609771fb4943b46588342cee428, type: 2}
-  _toVerify: []
-  _toUpdate: []
-  HoverPrefabObject: {fileID: 141141893352694280, guid: 22c2f14ddf3f8524e8af7b9b0e4468f8,
-    type: 3}
-  LocalHoverPosition: {x: 19, y: 0, z: 9}
-  PrevLocalHoverPosition: {x: 19, y: 0, z: 9}
-  <HideGridOutlineRenderer>k__BackingField: 0
-  SearchedInternalPosition: {x: 0, y: 0, z: 0}
-  SearchedInternalNode: {Layer: {fileID: 0}, InternalPosition: {x: 0, y: 0, z: 0},
-    LocalRotation: {x: 0, y: 0, z: 0, w: 0}, _block: {fileID: 0}, _instance: {fileID: 0},
-    _group: , _tileName: , _tileID: 0, _ruleID: 0}
 --- !u!4 &815637694
 Transform:
   m_ObjectHideFlags: 0
@@ -27078,16 +26757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1729306560}
 --- !u!65 &823866297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27539,16 +27208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -554100646
-  _ruleID: -1
-  _tileName: Fence
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 1, z: 2}
-  _localRotation: {x: -0, y: -0.7071069, z: -0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 774058119}
 --- !u!65 &834548335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28380,16 +28039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -943291725
-  _ruleID: -1
-  _tileName: Plank
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 1, z: 2}
-  _localRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1063493447}
 --- !u!65 &862279008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28566,16 +28215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 954823450}
 --- !u!65 &863709409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28750,16 +28389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 337555750}
 --- !u!65 &866869768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29361,16 +28990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1257325184}
 --- !u!65 &883610141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30478,16 +30097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 5}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 520208429}
 --- !u!65 &942020406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33840,16 +33449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 1398795420
-  _ruleID: -1
-  _tileName: Stairs
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 1, z: 4}
-  _localRotation: {x: -0, y: -1, z: -0, w: 0.000000011924881}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 100000, guid: df74ea1b0c580004380cabc3e8e18cda, type: 3}
 --- !u!65 &1043665345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34308,35 +33907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962878b2c93e50544bf2e4e4c234a454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayerName: A third layer
-  Group: {fileID: 0}
-  _activeTileID: -1
-  _Grid: {fileID: 0}
-  _NodesKeys:
-  - {x: 3, y: 1, z: 2}
-  _NodesValues:
-  - {Layer: {fileID: 1053951168}, InternalPosition: {x: 3, y: 1, z: 2}, LocalRotation: {x: -0,
-      y: -0.00000008742278, z: -0, w: -1}, _block: {fileID: 1119169451}, _instance: {fileID: 1119169450}, _group: TileGroup_Autotiles3D_Castle, _tileName: Fence, _tileID: -554100646, _ruleID: -1}
-  _AnchorKeys: 5a18f9de
-  _AnchorValues:
-  - {fileID: 1881669246}
-  LoadedGroups:
-  - {fileID: 11400000, guid: 1edde58f529342444af1e40ece72ce29, type: 2}
-  - {fileID: 11400000, guid: 16834233af9c1f54183b7534cf3231be, type: 2}
-  - {fileID: 11400000, guid: c734f5e481fe5654ea7150f7739985fb, type: 2}
-  - {fileID: 11400000, guid: 086471ca33d4b294b87b2cecdd98e4fd, type: 2}
-  - {fileID: 11400000, guid: 87b8d609771fb4943b46588342cee428, type: 2}
-  _toVerify: []
-  _toUpdate: []
-  HoverPrefabObject: {fileID: 141141893352694280, guid: 22c2f14ddf3f8524e8af7b9b0e4468f8,
-    type: 3}
-  LocalHoverPosition: {x: 14, y: 0, z: 12}
-  PrevLocalHoverPosition: {x: 14, y: 0, z: 12}
-  <HideGridOutlineRenderer>k__BackingField: 0
-  SearchedInternalPosition: {x: 0, y: 0, z: 0}
-  SearchedInternalNode: {Layer: {fileID: 0}, InternalPosition: {x: 0, y: 0, z: 0},
-    LocalRotation: {x: 0, y: 0, z: 0, w: 0}, _block: {fileID: 0}, _instance: {fileID: 0},
-    _group: , _tileName: , _tileID: 0, _ruleID: 0}
 --- !u!4 &1053951169
 Transform:
   m_ObjectHideFlags: 0
@@ -36097,16 +35667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -554100646
-  _ruleID: -1
-  _tileName: Fence
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 1, z: 2}
-  _localRotation: {x: -0, y: -0.00000008742278, z: -0, w: -1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1926678930}
 --- !u!65 &1119169452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36178,16 +35738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 568014433}
 --- !u!65 &1120245627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36886,16 +36436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 4, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2049926828}
 --- !u!65 &1142337036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37348,16 +36888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 4, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 255583629}
 --- !u!65 &1152981148
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39240,16 +38770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 897252403}
 --- !u!65 &1199234741
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39426,16 +38946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 6}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2017109790}
 --- !u!65 &1204399782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40489,16 +39999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -1275594940
-  _ruleID: -1
-  _tileName: Cross
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 580760229}
 --- !u!65 &1231918121
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40828,16 +40328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 10, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1138931543}
 --- !u!65 &1239657297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41283,16 +40773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1047260882}
 --- !u!65 &1249166751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42118,16 +41598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 6}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 45714962}
 --- !u!65 &1264219935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42276,16 +41746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1706916484}
 --- !u!65 &1267430020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42784,16 +42244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 1, z: 6}
-  _localRotation: {x: 0, y: -0.7071069, z: 0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1244350269}
 --- !u!65 &1299655222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42899,16 +42349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1558209457}
 --- !u!65 &1308787068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43360,10 +42800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  BakedParent: {fileID: 0}
-  _childCount: 66
-  _bakeCount: 0
 --- !u!1 &1317547977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a31350a29cdd1784bbb6cc8699d9c8e5,
@@ -44361,16 +43797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -1275594940
-  _ruleID: -1
-  _tileName: Cross
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 2, z: 6}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 27757681}
 --- !u!65 &1346106575
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44552,16 +43978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 4}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1892872267}
 --- !u!65 &1351254870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44994,10 +44410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 1398795420
-  BakedParent: {fileID: 0}
-  _childCount: 2
-  _bakeCount: 0
 --- !u!1001 &1368635576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45177,16 +44589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 8}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 637676649}
 --- !u!65 &1375526008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45258,16 +44660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1960699915}
 --- !u!65 &1376886426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45680,10 +45072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -554100646
-  BakedParent: {fileID: 0}
-  _childCount: 2
-  _bakeCount: 0
 --- !u!4 &1403972568
 Transform:
   m_ObjectHideFlags: 0
@@ -47142,16 +46530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 1398795420
-  _ruleID: 1351777877
-  _tileName: Stairs
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 2, z: 6}
-  _localRotation: {x: 0, y: -0.7071069, z: 0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 28007658}
 --- !u!64 &1438025149
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48041,16 +47419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -943291725
-  _ruleID: -1
-  _tileName: Plank
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 3, z: 4}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1460716941}
 --- !u!65 &1473132843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49177,16 +48545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 466108808}
 --- !u!65 &1514236413
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49258,16 +48616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 806148877}
 --- !u!65 &1518052138
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49806,16 +49154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1544689224}
 --- !u!65 &1542067510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50217,16 +49555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1254328210}
 --- !u!65 &1550609511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50757,16 +50085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -554100646
-  _ruleID: -1
-  _tileName: Fence
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 2, z: 6}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1173348384}
 --- !u!65 &1562671486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51563,16 +50881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 528696701}
 --- !u!65 &1594586322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51772,16 +51080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -1275594940
-  _ruleID: -1
-  _tileName: Cross
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 1, z: 5}
-  _localRotation: {x: -0, y: -0.7071069, z: -0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1170406390}
 --- !u!65 &1595870454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52887,16 +52185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 5}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 176709772}
 --- !u!65 &1643651578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53023,16 +52311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 2}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1746843630}
 --- !u!65 &1645411670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53338,16 +52616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 3}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 2040458320}
 --- !u!65 &1653511163
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54145,10 +53413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -1275594940
-  BakedParent: {fileID: 0}
-  _childCount: 4
-  _bakeCount: 0
 --- !u!1001 &1692153270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54591,275 +53855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962878b2c93e50544bf2e4e4c234a454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayerName: Main
-  Group: {fileID: 11400000, guid: 086471ca33d4b294b87b2cecdd98e4fd, type: 2}
-  _activeTileID: -1
-  _Grid: {fileID: 0}
-  _NodesKeys:
-  - {x: 3, y: 0, z: 2}
-  - {x: 4, y: 0, z: 2}
-  - {x: 7, y: 0, z: 3}
-  - {x: 7, y: 0, z: 2}
-  - {x: 5, y: 1, z: 2}
-  - {x: 6, y: 1, z: 2}
-  - {x: 3, y: 0, z: 3}
-  - {x: 3, y: 1, z: 3}
-  - {x: 3, y: 2, z: 3}
-  - {x: 3, y: 3, z: 4}
-  - {x: 3, y: 3, z: 5}
-  - {x: 3, y: 2, z: 6}
-  - {x: 4, y: 2, z: 6}
-  - {x: 5, y: 2, z: 6}
-  - {x: 6, y: 1, z: 6}
-  - {x: 5, y: 1, z: 6}
-  - {x: 7, y: 1, z: 6}
-  - {x: 7, y: 0, z: 6}
-  - {x: 7, y: 0, z: 5}
-  - {x: 7, y: 1, z: 5}
-  - {x: 7, y: 1, z: 4}
-  - {x: 6, y: 1, z: 5}
-  - {x: 8, y: 0, z: 2}
-  - {x: 8, y: 0, z: 3}
-  - {x: 8, y: 0, z: 4}
-  - {x: 8, y: 0, z: 5}
-  - {x: 8, y: 0, z: 6}
-  - {x: 9, y: 0, z: 2}
-  - {x: 9, y: 0, z: 3}
-  - {x: 9, y: 0, z: 4}
-  - {x: 9, y: 0, z: 5}
-  - {x: 9, y: 0, z: 6}
-  - {x: 10, y: 0, z: 2}
-  - {x: 10, y: 0, z: 3}
-  - {x: 10, y: 0, z: 4}
-  - {x: 10, y: 0, z: 5}
-  - {x: 10, y: 0, z: 6}
-  - {x: 5, y: 0, z: 7}
-  - {x: 6, y: 0, z: 7}
-  - {x: 7, y: 0, z: 7}
-  - {x: 8, y: 0, z: 7}
-  - {x: 9, y: 0, z: 7}
-  - {x: 10, y: 0, z: 7}
-  - {x: 1, y: 0, z: 7}
-  - {x: 2, y: 0, z: 7}
-  - {x: 3, y: 0, z: 7}
-  - {x: 4, y: 0, z: 7}
-  - {x: 1, y: 0, z: 8}
-  - {x: 2, y: 0, z: 8}
-  - {x: 3, y: 0, z: 8}
-  - {x: 4, y: 0, z: 8}
-  - {x: 4, y: 0, z: 9}
-  - {x: 5, y: 0, z: 9}
-  - {x: 6, y: 0, z: 9}
-  - {x: 7, y: 0, z: 9}
-  - {x: 8, y: 0, z: 9}
-  - {x: 9, y: 0, z: 9}
-  - {x: 10, y: 0, z: 9}
-  - {x: 10, y: 0, z: 8}
-  - {x: 9, y: 0, z: 8}
-  - {x: 8, y: 0, z: 8}
-  - {x: 7, y: 0, z: 8}
-  - {x: 6, y: 0, z: 8}
-  - {x: 5, y: 0, z: 8}
-  - {x: 1, y: 0, z: 9}
-  - {x: 2, y: 0, z: 9}
-  - {x: 3, y: 0, z: 9}
-  - {x: 6, y: 0, z: 3}
-  - {x: 5, y: 0, z: 3}
-  - {x: 4, y: 0, z: 3}
-  - {x: 2, y: 0, z: 2}
-  - {x: 2, y: 0, z: 3}
-  - {x: 1, y: 0, z: 2}
-  - {x: 1, y: 0, z: 3}
-  - {x: 1, y: 0, z: 4}
-  - {x: 1, y: 0, z: 5}
-  - {x: 1, y: 0, z: 6}
-  - {x: 2, y: 0, z: 6}
-  - {x: 2, y: 0, z: 5}
-  - {x: 2, y: 0, z: 4}
-  _NodesValues:
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1514236412}, _instance: {fileID: 1514236411}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 4, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 773058742}, _instance: {fileID: 773058741}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 883610140}, _instance: {fileID: 883610139}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1231918120}, _instance: {fileID: 1231918119}, _group: TileGroup_Autotiles3D_Castle, _tileName: Cross, _tileID: -1275594940, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 1, z: 2}, LocalRotation: {x: 0,
-      y: 0.70710677, z: 0, w: 0.70710677}, _block: {fileID: 862279007}, _instance: {fileID: 862279006}, _group: TileGroup_Autotiles3D_Castle, _tileName: Plank, _tileID: -943291725, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 1, z: 2}, LocalRotation: {x: 0,
-      y: 0.70710677, z: 0, w: 0.70710677}, _block: {fileID: 1758998160}, _instance: {fileID: 1758998159}, _group: TileGroup_Autotiles3D_Castle, _tileName: Plank, _tileID: -943291725, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 2103758925}, _instance: {fileID: 2103758924}, _group: TileGroup_Autotiles3D_Castle, _tileName: Ladder, _tileID: 47517870, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 1, z: 3}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 358340626}, _instance: {fileID: 358340625}, _group: TileGroup_Autotiles3D_Castle, _tileName: Ladder, _tileID: 47517870, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 2, z: 3}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 1808440442}, _instance: {fileID: 1808440441}, _group: TileGroup_Autotiles3D_Castle, _tileName: Ladder, _tileID: 47517870, _ruleID: 1492984090}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 3, z: 4}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 1473132842}, _instance: {fileID: 1473132841}, _group: TileGroup_Autotiles3D_Castle, _tileName: Plank, _tileID: -943291725, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 3, z: 5}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 480117022}, _instance: {fileID: 480117021}, _group: TileGroup_Autotiles3D_Castle, _tileName: Plank, _tileID: -943291725, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 2, z: 6}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 1346106574}, _instance: {fileID: 1346106573}, _group: TileGroup_Autotiles3D_Castle, _tileName: Cross, _tileID: -1275594940, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 4, y: 2, z: 6}, LocalRotation: {x: 0,
-      y: 1, z: 0, w: -0.00000004371139}, _block: {fileID: 812843958}, _instance: {fileID: 812843957}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 2, z: 6}, LocalRotation: {x: 0,
-      y: -0.7071069, z: 0, w: -0.70710665}, _block: {fileID: 1438025147}, _instance: {fileID: 1438025146}, _group: TileGroup_Autotiles3D_Castle, _tileName: Stairs, _tileID: 1398795420, _ruleID: 1351777877}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 1, z: 6}, LocalRotation: {x: 0,
-      y: -0.7071069, z: 0, w: -0.70710665}, _block: {fileID: 1299655221}, _instance: {fileID: 1299655220}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 1, z: 6}, LocalRotation: {x: -0,
-      y: -0.7071069, z: -0, w: -0.70710665}, _block: {fileID: 1755203515}, _instance: {fileID: 1755203514}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 1, z: 6}, LocalRotation: {x: 0,
-      y: -0.7071069, z: 0, w: -0.70710665}, _block: {fileID: 1728866881}, _instance: {fileID: 1728866880}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 6}, LocalRotation: {x: -0,
-      y: -0.7071069, z: -0, w: -0.70710665}, _block: {fileID: 1857190249}, _instance: {fileID: 1857190248}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 5}, LocalRotation: {x: -0,
-      y: -0.7071069, z: -0, w: -0.70710665}, _block: {fileID: 2042495290}, _instance: {fileID: 2042495289}, _group: TileGroup_Autotiles3D_Castle, _tileName: Cross, _tileID: -1275594940, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 1, z: 5}, LocalRotation: {x: -0,
-      y: -0.7071069, z: -0, w: -0.70710665}, _block: {fileID: 1595870453}, _instance: {fileID: 1595870452}, _group: TileGroup_Autotiles3D_Castle, _tileName: Cross, _tileID: -1275594940, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 1, z: 4}, LocalRotation: {x: -0,
-      y: -1, z: -0, w: 0.000000011924881}, _block: {fileID: 1043665344}, _instance: {fileID: 1043665343}, _group: TileGroup_Autotiles3D_Castle, _tileName: Stairs, _tileID: 1398795420, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 1, z: 5}, LocalRotation: {x: -0,
-      y: -1, z: -0, w: 0.000000011924881}, _block: {fileID: 1913100188}, _instance: {fileID: 1913100187}, _group: TileGroup_Autotiles3D_Castle, _tileName: Trap, _tileID: 28964398, _ruleID: -1}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 866869767}, _instance: {fileID: 866869764}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 726743773}, _instance: {fileID: 726743770}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 4}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1957116714}, _instance: {fileID: 1957116711}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 5}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 300068895}, _instance: {fileID: 300068892}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 6}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1264219934}, _instance: {fileID: 1264219931}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 635391714}, _instance: {fileID: 635391711}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 795433265}, _instance: {fileID: 795433262}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 4}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 2072263891}, _instance: {fileID: 2072263888}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 5}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 513674940}, _instance: {fileID: 513674937}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 6}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1204399781}, _instance: {fileID: 1204399778}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1239657296}, _instance: {fileID: 1239657293}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 646479591}, _instance: {fileID: 646479588}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 4}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 431490759}, _instance: {fileID: 431490756}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 5}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 295956734}, _instance: {fileID: 295956731}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 6}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 585743792}, _instance: {fileID: 585743789}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1550609510}, _instance: {fileID: 1550609507}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1814857711}, _instance: {fileID: 1814857708}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1949886526}, _instance: {fileID: 1949886523}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 2138059109}, _instance: {fileID: 2138059106}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 331642527}, _instance: {fileID: 331642524}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 337745328}, _instance: {fileID: 337745325}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1542067509}, _instance: {fileID: 1542067506}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1249166750}, _instance: {fileID: 1249166747}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1518052137}, _instance: {fileID: 1518052134}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 4, y: 0, z: 7}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 809494384}, _instance: {fileID: 809494381}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1199234740}, _instance: {fileID: 1199234737}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1267430019}, _instance: {fileID: 1267430016}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 290417699}, _instance: {fileID: 290417696}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 4, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 187667363}, _instance: {fileID: 187667360}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 4, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1152981147}, _instance: {fileID: 1152981144}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 743365134}, _instance: {fileID: 743365131}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1981652212}, _instance: {fileID: 1981652209}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 483029624}, _instance: {fileID: 483029621}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 48056389}, _instance: {fileID: 48056386}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1308787067}, _instance: {fileID: 1308787064}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 863709408}, _instance: {fileID: 863709405}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 10, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 80960338}, _instance: {fileID: 80960335}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 9, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 415931180}, _instance: {fileID: 415931177}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 8, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 2073444}, _instance: {fileID: 2073441}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 7, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1375526007}, _instance: {fileID: 1375526004}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 418422444}, _instance: {fileID: 418422441}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 0, z: 8}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 476091825}, _instance: {fileID: 476091822}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 407449456}, _instance: {fileID: 407449453}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1890004058}, _instance: {fileID: 1890004055}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 3, y: 0, z: 9}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 19965082}, _instance: {fileID: 19965079}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 6, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1594586321}, _instance: {fileID: 1594586318}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 5, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 823866296}, _instance: {fileID: 823866293}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 4, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1142337035}, _instance: {fileID: 1142337032}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1376886425}, _instance: {fileID: 1376886422}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1120245626}, _instance: {fileID: 1120245623}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 2}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1645411669}, _instance: {fileID: 1645411666}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 3}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1653511162}, _instance: {fileID: 1653511159}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 4}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1777280383}, _instance: {fileID: 1777280380}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 5}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1643651577}, _instance: {fileID: 1643651574}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 1, y: 0, z: 6}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1710009869}, _instance: {fileID: 1710009866}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 6}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 69331306}, _instance: {fileID: 69331303}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 5}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 942020405}, _instance: {fileID: 942020402}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  - {Layer: {fileID: 1702510461}, InternalPosition: {x: 2, y: 0, z: 4}, LocalRotation: {x: 0,
-      y: 0, z: 0, w: 1}, _block: {fileID: 1351254869}, _instance: {fileID: 1351254866}, _group: TileGroup_Autotiles3D_Castle, _tileName: Solid, _tileID: -833635479, _ruleID: -379419316}
-  _AnchorKeys: 69bb4fce44f7f7b3b382c6c7ae10d5029cec5f532ef6b901
-  _AnchorValues:
-  - {fileID: 1316277808}
-  - {fileID: 1688396291}
-  - {fileID: 686696346}
-  - {fileID: 1972094419}
-  - {fileID: 1365210233}
-  - {fileID: 2139513029}
-  LoadedGroups:
-  - {fileID: 11400000, guid: 1edde58f529342444af1e40ece72ce29, type: 2}
-  - {fileID: 11400000, guid: 086471ca33d4b294b87b2cecdd98e4fd, type: 2}
-  - {fileID: 11400000, guid: 87b8d609771fb4943b46588342cee428, type: 2}
-  _toVerify: []
-  _toUpdate: []
-  HoverPrefabObject: {fileID: 141141893352694280, guid: 22c2f14ddf3f8524e8af7b9b0e4468f8,
-    type: 3}
-  LocalHoverPosition: {x: 7, y: 0, z: 0}
-  PrevLocalHoverPosition: {x: 7, y: 0, z: 0}
-  <HideGridOutlineRenderer>k__BackingField: 0
-  SearchedInternalPosition: {x: 0, y: 0, z: 0}
-  SearchedInternalNode: {Layer: {fileID: 0}, InternalPosition: {x: 0, y: 0, z: 0},
-    LocalRotation: {x: 0, y: 0, z: 0, w: 0}, _block: {fileID: 0}, _instance: {fileID: 0},
-    _group: , _tileName: , _tileID: 0, _ruleID: 0}
 --- !u!4 &1702510462
 Transform:
   m_ObjectHideFlags: 0
@@ -55512,16 +54507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 6}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1841272280}
 --- !u!65 &1710009870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56150,16 +55135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 1, z: 6}
-  _localRotation: {x: 0, y: -0.7071069, z: 0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1452280275}
 --- !u!65 &1728866882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57420,16 +56395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -1
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 5, y: 1, z: 6}
-  _localRotation: {x: -0, y: -0.7071069, z: -0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 735921377}
 --- !u!65 &1755203516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57724,16 +56689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -943291725
-  _ruleID: -1
-  _tileName: Plank
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 1, z: 2}
-  _localRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 618019195}
 --- !u!65 &1758998161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58323,16 +57278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 1, y: 0, z: 4}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 463063384}
 --- !u!65 &1777280384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59575,16 +58520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 47517870
-  _ruleID: 1492984090
-  _tileName: Ladder
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 2, z: 3}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 208665431}
 --- !u!65 &1808440443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59788,16 +58723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 16255997}
 --- !u!65 &1814857712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61312,16 +60237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -1
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 6}
-  _localRotation: {x: -0, y: -0.7071069, z: -0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1214504161}
 --- !u!65 &1857190250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61616,10 +60531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -554100646
-  BakedParent: {fileID: 0}
-  _childCount: 1
-  _bakeCount: 0
 --- !u!4 &1881669247
 Transform:
   m_ObjectHideFlags: 0
@@ -61915,16 +60826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 2, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 94271260}
 --- !u!65 &1890004059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62469,16 +61370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 28964398
-  _ruleID: -1
-  _tileName: Trap
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 1, z: 5}
-  _localRotation: {x: -0, y: -1, z: -0, w: 0.000000011924881}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1406092298}
 --- !u!65 &1913100189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -63185,16 +62076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 265133056}
 --- !u!65 &1949886527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -63497,16 +62378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 4}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 807786783}
 --- !u!65 &1957116715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64180,10 +63051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 47517870
-  BakedParent: {fileID: 0}
-  _childCount: 3
-  _bakeCount: 0
 --- !u!1 &1972195315 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c4d5c550f8c1b4a428d1e72b89f3596d,
@@ -64634,16 +63501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 6, y: 0, z: 9}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 643614860}
 --- !u!65 &1981652213
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66829,16 +65686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -1275594940
-  _ruleID: -1
-  _tileName: Cross
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 7, y: 0, z: 5}
-  _localRotation: {x: -0, y: -0.7071069, z: -0, w: -0.70710665}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 338649710}
 --- !u!65 &2042495291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67835,16 +66682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 9, y: 0, z: 4}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 728798938}
 --- !u!65 &2072263892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68641,16 +67478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 47517870
-  _ruleID: -1
-  _tileName: Ladder
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 3, y: 0, z: 3}
-  _localRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1708121130}
 --- !u!65 &2103758926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69354,16 +68181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04309525ffc43d4594a3116dea8b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: -833635479
-  _ruleID: -379419316
-  _tileName: Solid
-  _group: TileGroup_Autotiles3D_Castle
-  _internalPosition: {x: 8, y: 0, z: 7}
-  _localRotation: {x: 0, y: 0, z: 0, w: 1}
-  _isBaked: 0
-  _grid: {fileID: 0}
-  _anchor: {fileID: 0}
-  View: {fileID: 1126265466}
 --- !u!65 &2138059110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69463,10 +68280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ba00f3f4dfea343bd5339890fa858d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileID: 28964398
-  BakedParent: {fileID: 0}
-  _childCount: 1
-  _bakeCount: 0
 --- !u!4 &2139513030
 Transform:
   m_ObjectHideFlags: 0

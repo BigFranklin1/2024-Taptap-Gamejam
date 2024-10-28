@@ -5,14 +5,21 @@ using UnityEngine;
 public class CharactorRotation : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    // public AnimationClip waveAnimation;
+    // public AnimationClip runAnimation;
+    // public AnimationClip idleAnimation;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
     }
 
     void Update()
     {
         Move();
+        Animate();
     }
 
     void Move()
@@ -28,5 +35,17 @@ public class CharactorRotation : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);
         }
+    }
+
+    void Animate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal"); // A/D 或 左/右箭头
+        float moveVertical = Input.GetAxis("Vertical"); // W/S 或 上/下箭头
+
+        // 判断是否有输入
+        bool isRunning = moveHorizontal != 0 || moveVertical != 0;
+
+        // 设置动画参数
+        animator.SetBool("isRunning", isRunning);
     }
 }
