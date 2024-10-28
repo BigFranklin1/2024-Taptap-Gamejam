@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private Camera mainCam;
-
+    
+    [SerializeField]
+    private Camera playerCam;
     [SerializeField]
     private MyPlayer player;
 
@@ -18,6 +20,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        playerCam.gameObject.SetActive(false);
+        mainCam.gameObject.SetActive(true);
+
     }
 
     public void OnStartClick()
@@ -30,6 +35,8 @@ public class GameManager : MonoBehaviour
         print("start game");
         mainCam.gameObject.SetActive(false);
         startMenu.gameObject.SetActive(false);
+        playerCam.gameObject.SetActive(true);
+
         player.StartGame();
     }
 

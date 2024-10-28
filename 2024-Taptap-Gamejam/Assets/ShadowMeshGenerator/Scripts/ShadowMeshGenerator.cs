@@ -7,9 +7,9 @@ using UnityEngine.Rendering;
 using Common.Unity.Drawing;
 
 using System.Linq;
-using UnityEditor.UI;
+// using UnityEditor.UI;
 using UnityEngine.Rendering.Universal;
-using UnityEditor.VersionControl;
+// using UnityEditor.VersionControl;
 
 using MarchingCubesProject;
 
