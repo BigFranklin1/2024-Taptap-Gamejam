@@ -169,7 +169,7 @@ public class ShadowMeshGenerator : MonoBehaviour
         existingShadowMesh.transform.localPosition = position;
         existingShadowMesh.AddComponent<MeshFilter>().mesh = mesh;
         existingShadowMesh.AddComponent<MeshCollider>().sharedMesh = mesh;
-        existingShadowMesh.AddComponent<MeshCollider>().convex = true;
+        existingShadowMesh.GetComponent<MeshCollider>().convex = true;
 
         existingShadowMesh.AddComponent<InteractableObject>().enableInteraction = true;
         existingShadowMesh.AddComponent<ShadowMeshController>().Appear(mesh);
