@@ -15,9 +15,15 @@ public class PlatformInteractor : MonoBehaviour
     public GameObject smg;
     private bool isInteracting = false; // Track whether the player is currently interacting
     private bool isInteractingWithShadow = false;
+    public bool isEnabled;
     public PlatformActiveDetection standArea;
     void Update()
     {
+        if (!isEnabled)
+        {
+            return;
+        }
+
         // Check if the player is near the interactable object
         //float distanceToInteractable = Vector3.Distance(playerObj.transform.position, transform.position);
         if (standArea.triggered)
