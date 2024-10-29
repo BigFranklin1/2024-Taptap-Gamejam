@@ -80,7 +80,8 @@ namespace KinematicCharacterController.Walkthrough.Crouching
             Quaternion cameraPlanarRotation = Quaternion.LookRotation(cameraPlanarDirection, Motor.CharacterUp);
 
             // Move and look inputs
-            _moveInputVector = cameraPlanarRotation * moveInputVector;
+            // _moveInputVector = cameraPlanarRotation * moveInputVector;
+            _moveInputVector = -moveInputVector;
             _lookInputVector = cameraPlanarDirection;
 
             // Jumping input
