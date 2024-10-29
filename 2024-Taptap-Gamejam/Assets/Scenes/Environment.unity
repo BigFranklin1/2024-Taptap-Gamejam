@@ -17464,7 +17464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: what is dark but made by light?
+  m_text: What is dark but made by light?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d105ae917f651774ab68591512eb5e98, type: 2}
   m_sharedMaterial: {fileID: -2086181303080159282, guid: d105ae917f651774ab68591512eb5e98,
