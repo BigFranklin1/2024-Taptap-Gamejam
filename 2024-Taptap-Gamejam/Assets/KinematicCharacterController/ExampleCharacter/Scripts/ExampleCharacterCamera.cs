@@ -57,6 +57,8 @@ namespace KinematicCharacterController.Examples
 
         private const int MaxObstructions = 32;
 
+        private bool isShadowCastingMode = false;
+
         void OnValidate()
         {
             DefaultDistance = Mathf.Clamp(DefaultDistance, MinDistance, MaxDistance);
@@ -198,13 +200,18 @@ namespace KinematicCharacterController.Examples
         {
             if (on)
             {
-                distanceBackup[0] = MinDistance;
-                distanceBackup[1] = MaxDistance;
-                MinDistance = shadowCastingDistance;
-                MaxDistance = shadowCastingDistance;
+                if (!isShadowCastingMode)
+                {
+                    isShadowCastingMode = true;
+                    distanceBackup[0] = MinDistance;
+                    distanceBackup[1] = MaxDistance;
+                    MinDistance = shadowCastingDistance;
+                    MaxDistance = shadowCastingDistance;
+                }
             }
             else
             {
+                isShadowCastingMode = false;
                 MinDistance = distanceBackup[0];
                 MaxDistance = distanceBackup[1];
             }
