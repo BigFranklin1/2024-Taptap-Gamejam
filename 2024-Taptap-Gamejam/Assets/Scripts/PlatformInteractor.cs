@@ -9,8 +9,8 @@ using UnityEngine.Rendering.Universal;
 public class PlatformInteractor : MonoBehaviour
 {
     public GameObject interactableObj; // The object to interact with
-    public GameObject recordedCaster;
-    public GameObject recordedShadow;
+    private GameObject recordedCaster;
+    private GameObject recordedShadow;
     public GameObject playerManager;          // The player object
     public GameObject playerObj;
     public GameObject ui;
