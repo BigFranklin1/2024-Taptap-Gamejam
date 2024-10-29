@@ -5,7 +5,7 @@ Shader "Unlit/ShadowMesh"
         [NoScaleOffset]_DissolveTex ("Texture", 2D) = "white" {}
         _AppearProgress("Appear Progress", Range(0, 1)) = 0
         _EmissionIntensity("Emission Intensity", Range(1, 2)) = 1
-        _Color("Color", Color) = (0.1843, 0.2706, 0.1922, 1)
+        _Color("Color", Color) = (0.8745098, 0.83137255, 0.45882353, 1)
     }
     SubShader
     {
