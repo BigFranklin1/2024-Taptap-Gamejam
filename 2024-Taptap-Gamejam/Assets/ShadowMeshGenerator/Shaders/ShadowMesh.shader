@@ -59,7 +59,7 @@ Shader "Unlit/ShadowMesh"
 
             float4 frag (v2f i) : SV_Target
             {
-                float alpha = clamp(tex2D(_DissolveTex, i.screenUV).r, 0.0, 1.0);
+                float alpha = clamp(tex2D(_DissolveTex, i.screenUV * 2.0).r, 0.0, 1.0);
                 alpha += 2 * _AppearProgress - 1;
                 float4 color = _Color * _EmissionIntensity;
                 return float4(color.rgb, saturate(alpha));
