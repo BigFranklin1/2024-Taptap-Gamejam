@@ -17755,7 +17755,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c84e7aa1b3e877645893d03c0cbd39fa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.749
+      value: -8.405748
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c84e7aa1b3e877645893d03c0cbd39fa,
         type: 3}
@@ -37763,10 +37763,10 @@ MonoBehaviour:
   standArea: {fileID: 606770459}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   shadowLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!1 &1073955462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c4d5c550f8c1b4a428d1e72b89f3596d,
@@ -48753,10 +48753,10 @@ MonoBehaviour:
   standArea: {fileID: 606770459}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   shadowLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!82 &1409851932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -60130,7 +60130,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2ab323bbb9cd1d54f8dd120908f2134a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.893251
+      value: -10.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ab323bbb9cd1d54f8dd120908f2134a,
         type: 3}

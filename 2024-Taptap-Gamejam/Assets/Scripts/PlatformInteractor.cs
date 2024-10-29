@@ -23,6 +23,16 @@ public class PlatformInteractor : MonoBehaviour
     public GameObject followPosition;
     public PlatformActiveDetection standArea;
 
+    // 定义玩家层和阴影层
+    public LayerMask playerLayer;
+    public LayerMask shadowLayer;
+    private int playerLayerInt;
+    private int shadowLayerInt;
+    void Start()
+    {
+        playerLayerInt = LayerMask.NameToLayer("Player");
+        shadowLayerInt = LayerMask.NameToLayer("ShadowMesh");
+    }
     void Update()
     {
         if (!isEnabled)
@@ -92,9 +102,12 @@ public class PlatformInteractor : MonoBehaviour
             }
             else if (isInteracting && isInteractingWithShadow)
             {
+                EnablePlayerShadowCollision(false);
                 // Release gameobject
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    EnablePlayerShadowCollision(true);
+
                     GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
                     if (shadowMesh != null)
                     {
@@ -135,6 +148,20 @@ public class PlatformInteractor : MonoBehaviour
             ui.SetActive(false);
         }
     }
+    private void EnablePlayerShadowCollision(bool enable)
+    {
+        if (enable)
+        {
+            // 开启玩家与阴影的碰撞
+            Physics.IgnoreLayerCollision(playerLayerInt, shadowLayerInt, false);
+        }
+        else
+        {
+            // 关闭玩家与阴影的碰撞
+            Physics.IgnoreLayerCollision(playerLayerInt, shadowLayerInt, true);
+        }
+    }
+        
     private void PlayShadowSound()
     {
         if (shadowSound != null)
