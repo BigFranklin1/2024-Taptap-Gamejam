@@ -16,6 +16,8 @@ namespace KinematicCharacterController.Examples
         public float DefaultDistance = 6f;
         public float MinDistance = 0f;
         public float MaxDistance = 10f;
+        public float shadowCastingDistance = 25f;
+        private float[] distanceBackup = new float[2];
         public float DistanceMovementSpeed = 5f;
         public float DistanceMovementSharpness = 10f;
 
@@ -189,6 +191,22 @@ namespace KinematicCharacterController.Examples
 
                 // Apply position
                 Transform.position = targetPosition;
+            }
+        }
+
+        public void ShadowCastingMode(bool on)
+        {
+            if (on)
+            {
+                distanceBackup[0] = MinDistance;
+                distanceBackup[1] = MaxDistance;
+                MinDistance = shadowCastingDistance;
+                MaxDistance = shadowCastingDistance;
+            }
+            else
+            {
+                MinDistance = distanceBackup[0];
+                MaxDistance = distanceBackup[1];
             }
         }
     }

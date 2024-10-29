@@ -37153,6 +37153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableObj: {fileID: 1874498925}
+  recordedCaster: {fileID: 0}
+  recordedShadow: {fileID: 0}
   playerManager: {fileID: 1068218264}
   playerObj: {fileID: 484609253}
   ui: {fileID: 644688597}
@@ -48055,6 +48057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableObj: {fileID: 2069624257}
+  recordedCaster: {fileID: 0}
+  recordedShadow: {fileID: 0}
   playerManager: {fileID: 1068218264}
   playerObj: {fileID: 484609253}
   ui: {fileID: 644688597}
@@ -58006,7 +58010,11 @@ MonoBehaviour:
     Press
     WASD/QE to move objects
 
-    Press Z/X/C to rotate objects'
+    Press Z/X/C to rotate objects
+
+
+    Note: Release
+    shadow if caught before exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

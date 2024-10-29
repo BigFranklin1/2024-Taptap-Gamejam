@@ -9,6 +9,8 @@ using UnityEngine.Rendering.Universal;
 public class PlatformInteractor : MonoBehaviour
 {
     public GameObject interactableObj; // The object to interact with
+    public GameObject recordedCaster;
+    public GameObject recordedShadow;
     public GameObject playerManager;          // The player object
     public GameObject playerObj;
     public GameObject ui;
@@ -20,8 +22,6 @@ public class PlatformInteractor : MonoBehaviour
     public AudioSource shadowSound;      // 按钮触发音效
     public GameObject followPosition;
     public PlatformActiveDetection standArea;
-    
-    
 
     void Update()
     {
@@ -39,31 +39,39 @@ public class PlatformInteractor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 // Debug.Log("CameraFollowPoint: "+  playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation);
-
-                isInteracting = !isInteracting; // Toggle interaction state
-                if(isInteractingWithShadow)
+                if (isInteractingWithShadow)
                 {
-                    isInteractingWithShadow = false;
-                }
-                InteractableObject interactable = interactableObj.GetComponent<InteractableObject>();
-                if (interactable != null)
-                {
-                    interactable.enableInteraction = isInteracting; // Enable or disable object interaction
-                }
-
-                MyPlayer playerScript = playerManager.GetComponent<MyPlayer>();
-                if (playerScript != null)
-                {
-                    playerScript.enableInteraction = !isInteracting; // Disable or enable player's control
-                }
-
-                if (isInteracting)
-                {
-                    Debug.Log("Started interaction with object.");
+                    //
                 }
                 else
                 {
-                    Debug.Log("Ended interaction with object.");
+                    isInteracting = !isInteracting; // Toggle interaction state
+                    if (isInteractingWithShadow)
+                    {
+                        isInteractingWithShadow = false;
+                    }
+                    InteractableObject interactable = interactableObj.GetComponent<InteractableObject>();
+                    if (interactable != null)
+                    {
+                        interactable.enableInteraction = isInteracting; // Enable or disable object interaction
+                    }
+
+                    MyPlayer playerScript = playerManager.GetComponent<MyPlayer>();
+                    if (playerScript != null)
+                    {
+                        playerScript.enableInteraction = !isInteracting; // Disable or enable player's control
+                    }
+
+                    if (isInteracting)
+                    {
+                        playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
+                        Debug.Log("Started interaction with object.");
+                    }
+                    else
+                    {
+                        playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
+                        Debug.Log("Ended interaction with object.");
+                    }
                 }
             }
 
@@ -74,7 +82,10 @@ public class PlatformInteractor : MonoBehaviour
                 {
                     // disable interactable gameobject
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
+                    recordedCaster = interactableObj;
+
                     isInteractingWithShadow = !isInteractingWithShadow;
+                    playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
                     smg.GetComponent<ShadowMeshGenerator>().ShadowCatch();
                     PlayShadowSound();
                 }
@@ -92,24 +103,26 @@ public class PlatformInteractor : MonoBehaviour
                     }
 
                     isInteractingWithShadow = false;
-              
+
+                    playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
                     // playerManager.GetComponent<MyPlayer>().CameraFollowPoint = GameObject.Find("CameraFollowPoint").transform;
                     playerManager.GetComponent<MyPlayer>().CameraFollowPoint = followPosition.transform;
                     playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 225, 0);
                     playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransform(playerManager.GetComponent<MyPlayer>().CameraFollowPoint);
 
+                    interactableObj = recordedCaster;
+                    interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
                 }
-                
-                
-
             }
             
             if (isInteractingWithShadow)
             {
                 // enable shadow gameobject to interactable
-                interactableObj = GameObject.Find("Generated Shadow Mesh");
-                if (interactableObj != null)
+                GameObject foundShadow = GameObject.Find("Generated Shadow Mesh");
+                if (foundShadow != null && recordedShadow != foundShadow)
                 {
+                    interactableObj = foundShadow;
+                    recordedShadow = foundShadow;
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
                     playerManager.GetComponent<MyPlayer>().CameraFollowPoint = interactableObj.transform;
                     playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransformInverseDirection(interactableObj.transform);
