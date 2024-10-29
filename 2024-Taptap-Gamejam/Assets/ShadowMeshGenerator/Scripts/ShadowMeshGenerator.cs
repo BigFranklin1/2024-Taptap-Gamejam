@@ -176,7 +176,7 @@ public class ShadowMeshGenerator : MonoBehaviour
 
         existingShadowMesh.AddComponent<Rigidbody>();
         existingShadowMesh.GetComponent<Rigidbody>().isKinematic = true;
-        existingShadowMesh.layer = LayerMask.GetMask("ShadowMesh");
+        existingShadowMesh.layer = LayerMask.NameToLayer("ShadowMesh");
         //existingShadowMesh.AddComponent<PlatformInteractor>();
 
         //existingShadowMesh.GetComponent<PlatformInteractor>().interactionRange = 2.0f;
