@@ -37761,6 +37761,12 @@ MonoBehaviour:
   shadowSound: {fileID: 1762646347}
   followPosition: {fileID: 1236892189}
   standArea: {fileID: 606770459}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  shadowLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1073955462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c4d5c550f8c1b4a428d1e72b89f3596d,
@@ -48745,6 +48751,12 @@ MonoBehaviour:
   shadowSound: {fileID: 1409851932}
   followPosition: {fileID: 1236892189}
   standArea: {fileID: 606770459}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  shadowLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!82 &1409851932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57821,7 +57833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1698407429
 MonoBehaviour:
   m_ObjectHideFlags: 0
