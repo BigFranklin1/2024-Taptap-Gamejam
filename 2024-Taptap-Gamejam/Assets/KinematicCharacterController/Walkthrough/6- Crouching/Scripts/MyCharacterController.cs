@@ -327,6 +327,10 @@ namespace KinematicCharacterController.Walkthrough.Crouching
 
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
+            if (hitCollider.gameObject.name == "Water")
+            {
+                Motor.SetPosition(new Vector3(-0.69f, 6.0f, 14.373f));
+            }
         }
     }
 }
