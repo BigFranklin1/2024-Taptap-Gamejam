@@ -28,6 +28,13 @@ public class ButtonInteractor : MonoBehaviour
             targetProp.SetActive(true);
 
             StartCoroutine(MoveBlock());
+
+            GameObject foundShadow = GameObject.Find("Generated Shadow Mesh");
+            if (foundShadow != null)
+            {
+                foundShadow.GetComponent<ShadowMeshController>().DisableDestruction();
+                foundShadow.name = "Preserved Shadow Mesh";
+            }
         }
     }
 

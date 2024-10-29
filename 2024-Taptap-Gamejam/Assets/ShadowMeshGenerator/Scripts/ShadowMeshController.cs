@@ -13,6 +13,7 @@ public class ShadowMeshController : MonoBehaviour
     private float emissionIntensity = 1.0f;
     // private float startTime;
 
+    private bool isDestroyable = true;
     private bool isDestroying = false;
     private float destroySpeed = 1.0f;
 
@@ -37,7 +38,10 @@ public class ShadowMeshController : MonoBehaviour
     {
         //material = new Material(Shader.Find("Shader Graphs/ShadowMesh_Destroy"));
         //gameObject.GetComponent<MeshRenderer>().material = material;
-        isDestroying = true;
+        if (isDestroyable)
+        {
+            isDestroying = true;
+        }
     }
 
     //private float easeInOutCubic(float t)
@@ -90,5 +94,10 @@ public class ShadowMeshController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void DisableDestruction()
+    {
+        isDestroyable = false;
     }
 }
