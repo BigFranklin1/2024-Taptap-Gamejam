@@ -4,7 +4,11 @@ using UnityEngine.VFX;
 public class ShadowMeshController : MonoBehaviour
 {
     private Material material;
-    private VisualEffect vfxComponent;
+    #if UNITY_WEBGL
+        private ParticleSystem particleComponent;
+    #else
+        private VisualEffect vfxComponent;
+    #endif
 
     private bool isAppearing = false;
     private bool isEmissing = false;
@@ -19,11 +23,21 @@ public class ShadowMeshController : MonoBehaviour
 
     public void Appear(Mesh mesh)
     {
-        VisualEffectAsset vfxGraph = Resources.Load<VisualEffectAsset>("VFX/AppearEffect");
-        vfxComponent = gameObject.AddComponent<VisualEffect>();
-        vfxComponent.visualEffectAsset = vfxGraph;
-        vfxComponent.SetMesh("ShadowMesh", mesh);
-        vfxComponent.Play();
+        #if UNITY_WEBGL
+            GameObject particlePrefab = Resources.Load<GameObject>("VFX/AppearEffect_WebGL");
+            GameObject particleInstance = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+            particleInstance.transform.SetParent(transform);
+            particleComponent = particleInstance.GetComponent<ParticleSystem>();
+            var shape = particleComponent.shape;
+            shape.mesh = mesh;
+            particleComponent.Play();
+        #else
+            VisualEffectAsset vfxGraph = Resources.Load<VisualEffectAsset>("VFX/AppearEffect");
+            vfxComponent = gameObject.AddComponent<VisualEffect>();
+            vfxComponent.visualEffectAsset = vfxGraph;
+            vfxComponent.SetMesh("ShadowMesh", mesh);
+            vfxComponent.Play();
+        #endif
 
         material = new Material(Shader.Find("Unlit/ShadowMesh"));
         // material = new Material(Shader.Find("Shader Graphs/ShadowMesh_Appear"));
@@ -89,7 +103,12 @@ public class ShadowMeshController : MonoBehaviour
 
             if (appearProgress <= 0.0f)
             {
-                vfxComponent.Stop();
+                #if UNITY_WEBGL
+                    particleComponent.Stop();
+                #else
+                    vfxComponent.Stop();
+                #endif
+
                 isDestroying = false;
                 Destroy(gameObject);
             }

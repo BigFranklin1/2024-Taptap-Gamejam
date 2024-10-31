@@ -13,6 +13,10 @@ using UnityEngine.Rendering.Universal;
 
 using MarchingCubesProject;
 
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using System.Threading;
+
 public class ShadowMeshGenerator : MonoBehaviour
 {
     public UniversalRendererData UniversalRendererData;
@@ -55,10 +59,61 @@ public class ShadowMeshGenerator : MonoBehaviour
             shadowMaskRenderFeature.EnableShadowCatching();
         }
     }
+
+    public void ToGenerateShadowMeshHandler(Texture2D shadowMaskTex)
+    {
+        Color[] pixels = shadowMaskTex.GetPixels();
+
+        //ConcurrentBag<Vector3> pointPositions = new ConcurrentBag<Vector3>();
+        //Parallel.For(0, pixels.Length, i =>
+        //{
+        //    Color pixel = pixels[i];
+        //    if (pixel.a > 0)
+        //    {
+        //        pointPositions.Add(new Vector3(pixel.r, pixel.g, pixel.b));
+        //    }
+        //});
+
+        List<Vector3> pointPositions = new List<Vector3>();
+        this.boundingBox = new float[] { float.MaxValue, float.MaxValue, float.MaxValue, float.MinValue, float.MinValue, float.MinValue };
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            Color pixel = pixels[i];
+            if (pixel.a > 0)
+            {
+                Vector3 worldPos = new Vector3(pixel.r, pixel.g, pixel.b);
+                pointPositions.Add(worldPos);
+
+                this.boundingBox[0] = Mathf.Min(this.boundingBox[0], worldPos.x);
+                this.boundingBox[1] = Mathf.Min(this.boundingBox[1], worldPos.y);
+                this.boundingBox[2] = Mathf.Min(this.boundingBox[2], worldPos.z);
+
+                this.boundingBox[3] = Mathf.Max(this.boundingBox[3], worldPos.x);
+                this.boundingBox[4] = Mathf.Max(this.boundingBox[4], worldPos.y);
+                this.boundingBox[5] = Mathf.Max(this.boundingBox[5], worldPos.z);
+            }
+        }
+        Vector3[] pointPositionsArray = pointPositions.ToArray();
+        int pointCount = pointPositionsArray.Length;
+        if (pointCount == 0)
+        {
+            Debug.LogWarning("No points found.");
+            return;
+        }
+        Debug.Log("Point count: " + pointCount);
+        BoundingBoxCheck();
+        ToGenerateShadowMeshHandler(pointPositionsArray.Length, pointPositionsArray);
+    }
+
     public void ToGenerateShadowMeshHandler(int pointCount, Vector3[] pointDataArray)
     {
         this.pointCount = pointCount;
         this.pointDataArray = pointDataArray;
+
+        #if UNITY_WEBGL
+        #else
+            CalculateBoundingBox();
+        #endif
 
         //Set the mode used to create the mesh.
         //Cubes is faster and creates less verts, tetrahedrons is slower and creates more verts but better represents the mesh surface.
@@ -75,7 +130,6 @@ public class ShadowMeshGenerator : MonoBehaviour
 
         int width = 128, height = 128, depth = 128; //The size of voxel array.
         var voxels = new VoxelArray(width, height, depth);
-        CalculateBoundingBox();
         foreach (Vector3 point in this.pointDataArray)
         {
             int x = Mathf.FloorToInt((point.x - this.boundingBox[0]) / (this.boundingBox[3] - this.boundingBox[0]) * (width - 1));
@@ -128,20 +182,84 @@ public class ShadowMeshGenerator : MonoBehaviour
         }
 
         CreateShadowMesh(verts, normals, indices, pivotOffset);
-
     }
 
     private void CalculateBoundingBox()
     {
-        for (int i = 0; i < pointCount; i++)
+        this.boundingBox = new float[] { float.MaxValue, float.MaxValue, float.MaxValue, float.MinValue, float.MinValue, float.MinValue };
+        
+        if (pointCount > 5000)
         {
-            Vector3 worldPos = this.pointDataArray[i];
-            this.boundingBox[0] = worldPos.x < this.boundingBox[0] ? worldPos.x : this.boundingBox[0];
-            this.boundingBox[1] = worldPos.y < this.boundingBox[1] ? worldPos.y : this.boundingBox[1];
-            this.boundingBox[2] = worldPos.z < this.boundingBox[2] ? worldPos.z : this.boundingBox[2];
-            this.boundingBox[3] = worldPos.x > this.boundingBox[3] ? worldPos.x : this.boundingBox[3];
-            this.boundingBox[4] = worldPos.y > this.boundingBox[4] ? worldPos.y : this.boundingBox[4];
-            this.boundingBox[5] = worldPos.z > this.boundingBox[5] ? worldPos.z : this.boundingBox[5];
+            float minX = float.MaxValue, minY = float.MaxValue, minZ = float.MaxValue;
+            float maxX = float.MinValue, maxY = float.MinValue, maxZ = float.MinValue;
+
+            Parallel.ForEach(Partitioner.Create(0, pointCount), range =>
+            {
+                float localMinX = float.MaxValue, localMinY = float.MaxValue, localMinZ = float.MaxValue;
+                float localMaxX = float.MinValue, localMaxY = float.MinValue, localMaxZ = float.MinValue;
+
+                for (int i = range.Item1; i < range.Item2; i++)
+                {
+                    Vector3 worldPos = this.pointDataArray[i];
+                    localMinX = Mathf.Min(localMinX, worldPos.x);
+                    localMinY = Mathf.Min(localMinY, worldPos.y);
+                    localMinZ = Mathf.Min(localMinZ, worldPos.z);
+                    localMaxX = Mathf.Max(localMaxX, worldPos.x);
+                    localMaxY = Mathf.Max(localMaxY, worldPos.y);
+                    localMaxZ = Mathf.Max(localMaxZ, worldPos.z);
+                }
+
+                Interlocked.Exchange(ref minX, Mathf.Min(minX, localMinX));
+                Interlocked.Exchange(ref minY, Mathf.Min(minY, localMinY));
+                Interlocked.Exchange(ref minZ, Mathf.Min(minZ, localMinZ));
+                Interlocked.Exchange(ref maxX, Mathf.Max(maxX, localMaxX));
+                Interlocked.Exchange(ref maxY, Mathf.Max(maxY, localMaxY));
+                Interlocked.Exchange(ref maxZ, Mathf.Max(maxZ, localMaxZ));
+            });
+
+            this.boundingBox[0] = minX;
+            this.boundingBox[1] = minY;
+            this.boundingBox[2] = minZ;
+            this.boundingBox[3] = maxX;
+            this.boundingBox[4] = maxY;
+            this.boundingBox[5] = maxZ;
+        }
+        else
+        {
+            for (int i = 0; i < pointCount; i++)
+            {
+                Vector3 worldPos = this.pointDataArray[i];
+
+                this.boundingBox[0] = Mathf.Min(this.boundingBox[0], worldPos.x);
+                this.boundingBox[1] = Mathf.Min(this.boundingBox[1], worldPos.y);
+                this.boundingBox[2] = Mathf.Min(this.boundingBox[2], worldPos.z);
+
+                this.boundingBox[3] = Mathf.Max(this.boundingBox[3], worldPos.x);
+                this.boundingBox[4] = Mathf.Max(this.boundingBox[4], worldPos.y);
+                this.boundingBox[5] = Mathf.Max(this.boundingBox[5], worldPos.z);
+            }
+        }
+
+        BoundingBoxCheck();
+    }
+
+    private void BoundingBoxCheck()
+    {
+        float epsilon = 1e-3f;
+        if (Mathf.Approximately(this.boundingBox[3], this.boundingBox[0]))
+        {
+            this.boundingBox[0] -= epsilon;
+            this.boundingBox[3] += epsilon;
+        }
+        if (Mathf.Approximately(this.boundingBox[4], this.boundingBox[1]))
+        {
+            this.boundingBox[1] -= epsilon;
+            this.boundingBox[4] += epsilon;
+        }
+        if (Mathf.Approximately(this.boundingBox[5], this.boundingBox[2]))
+        {
+            this.boundingBox[2] -= epsilon;
+            this.boundingBox[5] += epsilon;
         }
     }
 
@@ -166,7 +284,7 @@ public class ShadowMeshGenerator : MonoBehaviour
             existingShadowMesh.GetComponent<ShadowMeshController>().Destroy();
 
         existingShadowMesh = new GameObject("Generated Shadow Mesh");
-        existingShadowMesh.transform.localPosition = position;
+        existingShadowMesh.transform.position = position;
         existingShadowMesh.AddComponent<MeshFilter>().mesh = mesh;
         existingShadowMesh.AddComponent<MeshCollider>().sharedMesh = mesh;
         existingShadowMesh.GetComponent<MeshCollider>().convex = true;

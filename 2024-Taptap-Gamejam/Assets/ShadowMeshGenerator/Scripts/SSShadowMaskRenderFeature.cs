@@ -9,7 +9,11 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
 {
     class ShadowMaskRenderPass : ScriptableRenderPass
     {
-        public event Action<int, Vector3[]> ToGenerateShadowMesh;
+        #if UNITY_WEBGL
+            public event Action<Texture2D> ToGenerateShadowMesh_WebGL;
+        #else
+            public event Action<int, Vector3[]> ToGenerateShadowMesh;
+        #endif
 
         private RTHandle maskRTHandle;
         private ShaderTagId shaderTagId;
@@ -41,7 +45,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                     height: (int)(Screen.height * 1.5f),
                     depthBufferBits: DepthBits.None,
                     colorFormat: GraphicsFormat.R16G16B16A16_SFloat,
-                    enableRandomWrite: true,
+                    //enableRandomWrite: true,
                     name: "SSShadowMask"
                 );
             }
@@ -53,7 +57,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                     height: (int)(Screen.height * 1.5f),
                     depthBufferBits: DepthBits.None,
                     colorFormat: GraphicsFormat.R16G16B16A16_SFloat,
-                    enableRandomWrite: true,
+                    //enableRandomWrite: true,
                     name: "SSShadowMask"
                 );
             }
@@ -87,10 +91,41 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                 this.shadowMeshGenerator = GameObject.FindWithTag("MeshGenerator").GetComponent<ShadowMeshGenerator>();
                 if (this.shadowMeshGenerator == null)
                     Debug.LogError("MeshGenerator not found in the scene.");
-                this.ToGenerateShadowMesh += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
+
+                #if UNITY_WEBGL
+                    this.ToGenerateShadowMesh_WebGL += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
+                #else
+                    this.ToGenerateShadowMesh += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
+                #endif
             }
 
-            ShadowPointsExtraction(context);
+            #if UNITY_WEBGL
+                Texture2D shadowMaskTex = new Texture2D(this.maskRTHandle.rt.width, this.maskRTHandle.rt.height, TextureFormat.RGBAHalf, false);
+                RenderTexture.active = this.maskRTHandle.rt;
+                shadowMaskTex.ReadPixels(new Rect(0, 0, this.maskRTHandle.rt.width, this.maskRTHandle.rt.height), 0, 0);
+                shadowMaskTex.Apply();
+                RenderTexture.active = null;
+
+                this.ToGenerateShadowMesh_WebGL?.Invoke(shadowMaskTex);
+            #else
+                ShadowPointsExtraction(context);
+                int[] pointCountArray = new int[1];
+                this.pointCountBuffer.GetData(pointCountArray);
+                int pointCount = pointCountArray[0];
+
+                if (pointCount == 0)
+                {
+                    Debug.LogWarning("No points found.");
+                    return;
+                }
+                Debug.Log("Point count: " + pointCount);
+                Vector3[] pointDataArray = new Vector3[pointCount];
+                this.pointBuffer.GetData(pointDataArray);
+
+                this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
+
+                ReleaseBuffers();
+            #endif
 
             //AsyncGPUReadback.Request(this.pointCountBuffer, (AsyncGPUReadbackRequest request) =>
             //{
@@ -117,23 +152,6 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
 
             //    ReleaseBuffers();
             //});
-
-            int[] pointCountArray = new int[1];
-            this.pointCountBuffer.GetData(pointCountArray);
-            int pointCount = pointCountArray[0];
-
-            if (pointCount == 0)
-            {
-                Debug.LogWarning("No points found.");
-                return;
-            }
-            Debug.Log("Point count: " + pointCount);
-            Vector3[] pointDataArray = new Vector3[pointCount];
-            this.pointBuffer.GetData(pointDataArray);
-
-            this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
-
-            ReleaseBuffers();
         }
 
         private void ShadowPointsExtraction(ScriptableRenderContext context)
@@ -184,7 +202,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
 
     public override void Create()
     {
-        GraphicsFormat rtColorFormat = GraphicsFormat.R16G16B16A16_SFloat;
+        //GraphicsFormat rtColorFormat = GraphicsFormat.R16G16B16A16_SFloat;
         //GraphicsFormat rtColorFormat = GraphicsFormat.R32G32B32A32_SFloat;
 
         //this.maskRTHandle = RTHandles.Alloc(SSShadowMaskRenderTexture);
