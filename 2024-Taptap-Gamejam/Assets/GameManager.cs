@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
+    public void OnExitClick()
+    {
+        ExitGame();
+    }
+
     void StartGame()
     {
         print("start game");
@@ -39,6 +44,17 @@ public class GameManager : MonoBehaviour
         playerCam.gameObject.SetActive(true);
 
         player.StartGame();
+    }
+
+    void ExitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBGL
+            ReloadCurrentScene();
+        #else
+            Application.Quit();
+        #endif
     }
 
     // Update is called once per frame
