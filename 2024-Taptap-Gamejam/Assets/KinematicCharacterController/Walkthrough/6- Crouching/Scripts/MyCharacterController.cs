@@ -29,6 +29,7 @@ namespace KinematicCharacterController.Walkthrough.Crouching
         public float MaxAirMoveSpeed = 10f;
         public float AirAccelerationSpeed = 5f;
         public float Drag = 0.1f;
+        public float AirHorizontalDecay = 0.8f;
 
         [Header("Jumping")]
         public bool AllowJumpingWhenSliding = false;
@@ -172,6 +173,10 @@ namespace KinematicCharacterController.Walkthrough.Crouching
                     Vector3 velocityDiff = Vector3.ProjectOnPlane(targetMovementVelocity - currentVelocity, Gravity);
                     currentVelocity += velocityDiff * AirAccelerationSpeed * deltaTime;
                 }
+
+                Vector3 horizontalVelocity = Vector3.ProjectOnPlane(currentVelocity, Motor.CharacterUp);
+                horizontalVelocity *= AirHorizontalDecay;
+                currentVelocity = horizontalVelocity + Vector3.Project(currentVelocity, Motor.CharacterUp);
 
                 // Gravity
                 currentVelocity += Gravity * deltaTime;
