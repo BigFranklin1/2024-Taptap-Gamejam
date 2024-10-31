@@ -174,11 +174,13 @@ public class PlatformInteractor : MonoBehaviour
         {
             // 开启玩家与阴影的碰撞
             Physics.IgnoreLayerCollision(playerLayerInt, shadowLayerInt, false);
+            playerObj.GetComponent<MyCharacterController>().Motor.CollidableLayers |= (1 << shadowLayerInt);
         }
         else
         {
             // 关闭玩家与阴影的碰撞
             Physics.IgnoreLayerCollision(playerLayerInt, shadowLayerInt, true);
+            playerObj.GetComponent<MyCharacterController>().Motor.CollidableLayers &= ~(1 << shadowLayerInt);
         }
     }
         
