@@ -135,7 +135,7 @@ public class PlatformInteractor : MonoBehaviour
                     playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
                     // playerManager.GetComponent<MyPlayer>().CameraFollowPoint = GameObject.Find("CameraFollowPoint").transform;
                     playerManager.GetComponent<MyPlayer>().CameraFollowPoint = followPosition.transform;
-                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 225, 0);
+                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 205, 0);
                     playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransform(playerManager.GetComponent<MyPlayer>().CameraFollowPoint);
 
                     interactableObj = recordedCaster;
