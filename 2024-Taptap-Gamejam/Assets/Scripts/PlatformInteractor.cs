@@ -13,7 +13,8 @@ public class PlatformInteractor : MonoBehaviour
     private GameObject recordedShadow;
     public GameObject playerManager;          // The player object
     public GameObject playerObj;
-    public GameObject ui;
+    //public GameObject ui;
+    public GameObject guidanceUI;
     public float interactionRange = 2f; // Range within which interaction is possible
     public GameObject smg;
     private bool isInteracting = false; // Track whether the player is currently interacting
@@ -28,10 +29,14 @@ public class PlatformInteractor : MonoBehaviour
     public LayerMask shadowLayer;
     private int playerLayerInt;
     private int shadowLayerInt;
+    private GuidanceUIController guidanceUIController;
+
     void Start()
     {
         playerLayerInt = LayerMask.NameToLayer("Player");
         shadowLayerInt = LayerMask.NameToLayer("ShadowMesh");
+
+        guidanceUIController = guidanceUI.GetComponent<GuidanceUIController>();
     }
     void Update()
     {
@@ -44,7 +49,12 @@ public class PlatformInteractor : MonoBehaviour
         //float distanceToInteractable = Vector3.Distance(playerObj.transform.position, transform.position);
         if (standArea.triggered)
         {
-            ui.SetActive(true);
+            //ui.SetActive(true);
+            if (guidanceUIController.currentState == GuidanceUIState.Nothing)
+            {
+                guidanceUIController.SwitchUI(GuidanceUIState.BeforeInteraction);
+            }
+            
             // If player is within range and presses the 'E' key
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -74,11 +84,13 @@ public class PlatformInteractor : MonoBehaviour
 
                     if (isInteracting)
                     {
+                        guidanceUIController.SwitchUI(GuidanceUIState.ControlObject);
                         playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
                         Debug.Log("Started interaction with object.");
                     }
                     else
                     {
+                        guidanceUIController.SwitchUI(GuidanceUIState.BeforeInteraction);
                         playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
                         Debug.Log("Ended interaction with object.");
                     }
@@ -90,6 +102,7 @@ public class PlatformInteractor : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    guidanceUIController.SwitchUI(GuidanceUIState.ControlShadow);
                     // disable interactable gameobject
                     interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
                     recordedCaster = interactableObj;
@@ -106,6 +119,8 @@ public class PlatformInteractor : MonoBehaviour
                 // Release gameobject
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    guidanceUIController.SwitchUI(GuidanceUIState.ControlObject);
+
                     EnablePlayerShadowCollision(true);
 
                     GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
@@ -141,11 +156,11 @@ public class PlatformInteractor : MonoBehaviour
                     playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransformInverseDirection(interactableObj.transform);
                 }
             }
-
         }
         else
         {
-            ui.SetActive(false);
+            //ui.SetActive(false);
+            guidanceUIController.SwitchUI(GuidanceUIState.Nothing);
         }
     }
     private void EnablePlayerShadowCollision(bool enable)
