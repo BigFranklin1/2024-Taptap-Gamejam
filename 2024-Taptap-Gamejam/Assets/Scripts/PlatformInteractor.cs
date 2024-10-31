@@ -40,6 +40,10 @@ public class PlatformInteractor : MonoBehaviour
     }
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (!isEnabled)
         {
             return;
@@ -163,6 +167,7 @@ public class PlatformInteractor : MonoBehaviour
             guidanceUIController.SwitchUI(GuidanceUIState.Nothing);
         }
     }
+
     private void EnablePlayerShadowCollision(bool enable)
     {
         if (enable)

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Canvas startMenu;
+    [SerializeField]
+    private Canvas pauseMenu;
 
     private bool hasStarted;
     private bool cursorNoLock;
@@ -41,6 +43,11 @@ public class GameManager : MonoBehaviour
         ExitGame();
     }
 
+    public void OnContinueClick()
+    {
+        ContinueGame();
+    }
+
     void StartGame()
     {
         print("start game");
@@ -64,6 +71,13 @@ public class GameManager : MonoBehaviour
         #endif
     }
 
+    void ContinueGame()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        pauseMenu.gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -71,22 +85,30 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             cursorNoLock = true;
+            if (hasStarted)
+            {
+                Time.timeScale = 0;
+                pauseMenu.gameObject.SetActive(true);
+            }
         }
         else if (cursorNoLock && (Input.GetMouseButtonDown(0) || Input.anyKeyDown))
         {
-            if (hasStarted)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Confined;
-            }
+            Cursor.lockState = CursorLockMode.Confined;
+            //if (hasStarted)
+            //{
+            //    Cursor.lockState = CursorLockMode.Locked;
+            //}
+            //else
+            //{
+            //    Cursor.lockState = CursorLockMode.Confined;
+            //}
+            cursorNoLock = false;
         }
     }
 
     public void ReloadCurrentScene()
     {
+        Time.timeScale = 1;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
