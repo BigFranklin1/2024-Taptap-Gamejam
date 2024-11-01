@@ -3,7 +3,6 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Experimental.Rendering;
 using System;
-using System.Threading.Tasks;
 
 public class ShadowMaskRenderFeature : ScriptableRendererFeature
 {
@@ -91,15 +90,11 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                 this.shadowMeshGenerator = GameObject.FindWithTag("MeshGenerator").GetComponent<ShadowMeshGenerator>();
                 if (this.shadowMeshGenerator == null)
                     Debug.LogError("MeshGenerator not found in the scene.");
-
-                #if UNITY_WEBGL
-                    this.ToGenerateShadowMesh_WebGL += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
-                #else
-                    this.ToGenerateShadowMesh += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
-                #endif
             }
 
             #if UNITY_WEBGL
+                this.ToGenerateShadowMesh_WebGL += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
+
                 Texture2D shadowMaskTex = new Texture2D(this.maskRTHandle.rt.width, this.maskRTHandle.rt.height, TextureFormat.RGBAHalf, false);
                 RenderTexture.active = this.maskRTHandle.rt;
                 shadowMaskTex.ReadPixels(new Rect(0, 0, this.maskRTHandle.rt.width, this.maskRTHandle.rt.height), 0, 0);
@@ -107,7 +102,11 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                 RenderTexture.active = null;
 
                 this.ToGenerateShadowMesh_WebGL?.Invoke(shadowMaskTex);
+
+                this.ToGenerateShadowMesh_WebGL -= this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
             #else
+                this.ToGenerateShadowMesh += this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
+
                 ShadowPointsExtraction(context);
                 int[] pointCountArray = new int[1];
                 this.pointCountBuffer.GetData(pointCountArray);
@@ -125,6 +124,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                 this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
 
                 ReleaseBuffers();
+                this.ToGenerateShadowMesh -= this.shadowMeshGenerator.ToGenerateShadowMeshHandler;
             #endif
 
             //AsyncGPUReadback.Request(this.pointCountBuffer, (AsyncGPUReadbackRequest request) =>

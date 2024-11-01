@@ -29,6 +29,7 @@ public class PlatformInteractor : MonoBehaviour
     public LayerMask shadowLayer;
     private int playerLayerInt;
     private int shadowLayerInt;
+
     private GuidanceUIController guidanceUIController;
 
     void Start()
