@@ -84,11 +84,11 @@ public class InteractableObject : MonoBehaviour
         // 通过 Q 和 E 键控制 Y 轴的运动
         if (Input.GetKey(KeyCode.Q))
         {
-            moveZ = moveSpeed * Time.deltaTime; // Q 键使物体上升
+            moveZ = moveSpeed * Time.deltaTime * 0.6f; // Q 键使物体上升
         }
         else if (Input.GetKey(KeyCode.E))
         {
-            moveZ = -moveSpeed * Time.deltaTime; // E 键使物体下降
+            moveZ = -moveSpeed * Time.deltaTime * 0.6f; // E 键使物体下降
         }
 
         transform.Translate(new Vector3(-moveX, moveZ, -moveY), Space.World);
