@@ -10,17 +10,17 @@ public class PlatformInteractor : MonoBehaviour
 {
     public GameObject interactableObj; // The object to interact with
     private GameObject recordedCaster;
-    private GameObject recordedShadow;
     public GameObject playerManager;          // The player object
     public GameObject playerObj;
     //public GameObject ui;
     public GameObject guidanceUI;
+    public GameObject shadowExtremeCaseUI;
     public float interactionRange = 2f; // Range within which interaction is possible
     public GameObject smg;
+
     private bool isInteracting = false; // Track whether the player is currently interacting
     private bool isInteractingWithShadow = false;
     public bool isEnabled;
-    public AudioSource shadowSound;      // 按钮触发音效
     public GameObject followPosition;
     public PlatformActiveDetection standArea;
 
@@ -31,6 +31,9 @@ public class PlatformInteractor : MonoBehaviour
     private int shadowLayerInt;
 
     private GuidanceUIController guidanceUIController;
+    private ShadowExtremeCaseUIHandler shadowExtremeCaseUIHandler;
+
+    private ShadowMeshGenerator shadowMeshGenerator;
 
     void Start()
     {
@@ -38,6 +41,10 @@ public class PlatformInteractor : MonoBehaviour
         shadowLayerInt = LayerMask.NameToLayer("ShadowMesh");
 
         guidanceUIController = guidanceUI.GetComponent<GuidanceUIController>();
+        shadowExtremeCaseUIHandler = shadowExtremeCaseUI.GetComponent<ShadowExtremeCaseUIHandler>();
+
+        shadowMeshGenerator = smg.GetComponent<ShadowMeshGenerator>();
+        shadowMeshGenerator.HasGeneratedShadow += HasGeneratedShadowHandler;
     }
     void Update()
     {
@@ -71,10 +78,7 @@ public class PlatformInteractor : MonoBehaviour
                 else
                 {
                     isInteracting = !isInteracting; // Toggle interaction state
-                    if (isInteractingWithShadow)
-                    {
-                        isInteractingWithShadow = false;
-                    }
+
                     InteractableObject interactable = interactableObj.GetComponent<InteractableObject>();
                     if (interactable != null)
                     {
@@ -96,69 +100,42 @@ public class PlatformInteractor : MonoBehaviour
                     else
                     {
                         guidanceUIController.SwitchUI(GuidanceUIState.BeforeInteraction);
+                        shadowExtremeCaseUIHandler.SwitchUI(ShadowState.Normal);
                         playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
                         Debug.Log("Ended interaction with object.");
                     }
                 }
             }
 
-            // Debug.Log("isInteracting:"+isInteracting+" isInteractingWithShadows:"+isInteractingWithShadow);
-            if (isInteracting && !isInteractingWithShadow) 
+            if (isInteracting)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (!isInteractingWithShadow)
                 {
-                    guidanceUIController.SwitchUI(GuidanceUIState.ControlShadow);
-                    // disable interactable gameobject
-                    interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
-                    recordedCaster = interactableObj;
-
-                    isInteractingWithShadow = !isInteractingWithShadow;
-                    playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
-                    smg.GetComponent<ShadowMeshGenerator>().ShadowCatch();
-                    PlayShadowSound();
-                }
-            }
-            else if (isInteracting && isInteractingWithShadow)
-            {
-                EnablePlayerShadowCollision(false);
-                // Release gameobject
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    guidanceUIController.SwitchUI(GuidanceUIState.ControlObject);
-
-                    EnablePlayerShadowCollision(true);
-
-                    GameObject shadowMesh = GameObject.Find("Generated Shadow Mesh");
-                    if (shadowMesh != null)
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        shadowMesh.GetComponent<Rigidbody>().isKinematic = false;
-                        shadowMesh.GetComponent<InteractableObject>().enableInteraction = false;
+                        shadowMeshGenerator.CatchShadow();
                     }
-
-                    isInteractingWithShadow = false;
-
-                    playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
-                    // playerManager.GetComponent<MyPlayer>().CameraFollowPoint = GameObject.Find("CameraFollowPoint").transform;
-                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint = followPosition.transform;
-                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 205, 0);
-                    playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransform(playerManager.GetComponent<MyPlayer>().CameraFollowPoint);
-
-                    interactableObj = recordedCaster;
-                    interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
                 }
-            }
-            
-            if (isInteractingWithShadow)
-            {
-                // enable shadow gameobject to interactable
-                GameObject foundShadow = GameObject.Find("Generated Shadow Mesh");
-                if (foundShadow != null && recordedShadow != foundShadow)
+                else if (isInteractingWithShadow)
                 {
-                    interactableObj = foundShadow;
-                    recordedShadow = foundShadow;
-                    interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
-                    playerManager.GetComponent<MyPlayer>().CameraFollowPoint = interactableObj.transform;
-                    playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransformInverseDirection(interactableObj.transform);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        EnablePlayerShadowCollision(true);
+
+                        isInteractingWithShadow = false;
+                        interactableObj.GetComponent<Rigidbody>().isKinematic = false;
+                        interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
+                        guidanceUIController.SwitchUI(GuidanceUIState.ControlObject);
+
+                        playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
+                        // playerManager.GetComponent<MyPlayer>().CameraFollowPoint = GameObject.Find("CameraFollowPoint").transform;
+                        playerManager.GetComponent<MyPlayer>().CameraFollowPoint = followPosition.transform;
+                        playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation = Quaternion.Euler(0, 205, 0);
+                        playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransform(playerManager.GetComponent<MyPlayer>().CameraFollowPoint);
+
+                        interactableObj = recordedCaster;
+                        interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
+                    }
                 }
             }
         }
@@ -167,6 +144,22 @@ public class PlatformInteractor : MonoBehaviour
             //ui.SetActive(false);
             guidanceUIController.SwitchUI(GuidanceUIState.Nothing);
         }
+    }
+
+    private void HasGeneratedShadowHandler(GameObject generatedShadowMesh)
+    {
+        interactableObj.GetComponent<InteractableObject>().enableInteraction = false;
+        recordedCaster = interactableObj;
+
+        isInteractingWithShadow = true;
+        interactableObj = generatedShadowMesh;
+        interactableObj.GetComponent<InteractableObject>().enableInteraction = true;
+        guidanceUIController.SwitchUI(GuidanceUIState.ControlShadow);
+
+        playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
+        playerManager.GetComponent<MyPlayer>().CameraFollowPoint = interactableObj.transform;
+        playerManager.GetComponent<MyPlayer>().OrbitCamera.SetFollowTransformInverseDirection(interactableObj.transform);
+        EnablePlayerShadowCollision(false);
     }
 
     private void EnablePlayerShadowCollision(bool enable)
@@ -184,13 +177,10 @@ public class PlatformInteractor : MonoBehaviour
             playerObj.GetComponent<MyCharacterController>().Motor.CollidableLayers &= ~(1 << shadowLayerInt);
         }
     }
-        
-    private void PlayShadowSound()
+
+    private void OnDisable()
     {
-        if (shadowSound != null)
-        {
-            shadowSound.Play();
-        }
+        shadowMeshGenerator.HasGeneratedShadow -= HasGeneratedShadowHandler;
     }
 }
 

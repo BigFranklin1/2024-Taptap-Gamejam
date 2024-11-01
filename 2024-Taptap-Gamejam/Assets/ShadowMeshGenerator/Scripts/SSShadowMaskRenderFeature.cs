@@ -11,7 +11,7 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
         #if UNITY_WEBGL
             public event Action<Texture2D> ToGenerateShadowMesh_WebGL;
         #else
-            public event Action<int, Vector3[]> ToGenerateShadowMesh;
+            public event Action<int, Vector3[], ShadowState> ToGenerateShadowMesh;
         #endif
 
         private RTHandle maskRTHandle;
@@ -112,16 +112,25 @@ public class ShadowMaskRenderFeature : ScriptableRendererFeature
                 this.pointCountBuffer.GetData(pointCountArray);
                 int pointCount = pointCountArray[0];
 
+                ShadowState state = ShadowState.Normal;
                 if (pointCount == 0)
                 {
                     Debug.LogWarning("No points found.");
-                    return;
+                    state = ShadowState.None;
                 }
                 Debug.Log("Point count: " + pointCount);
                 Vector3[] pointDataArray = new Vector3[pointCount];
-                this.pointBuffer.GetData(pointDataArray);
+                try
+                {
+                    this.pointBuffer.GetData(pointDataArray);
+                }
+                catch (ArgumentException e)
+                {
+                    Debug.Log($"Shadow size out of buffer limit: {e.Message}");
+                    state = ShadowState.Oversize;
+                }
 
-                this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray);
+                this.ToGenerateShadowMesh?.Invoke(pointCount, pointDataArray, state);
 
                 ReleaseBuffers();
                 this.ToGenerateShadowMesh -= this.shadowMeshGenerator.ToGenerateShadowMeshHandler;

@@ -17,17 +17,28 @@ using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading;
 
+public enum ShadowState
+{
+    None,
+    Normal,
+    Oversize
+}
+
 public class ShadowMeshGenerator : MonoBehaviour
 {
     public UniversalRendererData UniversalRendererData;
     public MARCHING_MODE mode = MARCHING_MODE.CUBES;
     public bool showNormals = false;
+    public GameObject shadowExtremeCaseUI;
+    public event Action<GameObject> HasGeneratedShadow;
 
     private int pointCount;
     private Vector3[] pointDataArray;
     private float[] boundingBox = new float[6];
     private ShadowMaskRenderFeature shadowMaskRenderFeature;
     private GameObject existingShadowMesh;
+    private AudioSource AppearSound;
+    private ShadowExtremeCaseUIHandler shadowExtremeCaseUIHandler;
 
     // interaction level
     //public GameObject platform;
@@ -40,6 +51,8 @@ public class ShadowMeshGenerator : MonoBehaviour
                 shadowMaskRenderFeature = shadowMaskRF;
             }
         }
+        AppearSound = GetComponent<AudioSource>();
+        shadowExtremeCaseUIHandler = shadowExtremeCaseUI.GetComponent<ShadowExtremeCaseUIHandler>();
     }
 
     void Update()
@@ -52,7 +65,7 @@ public class ShadowMeshGenerator : MonoBehaviour
         //    }
         //}
     }
-    public void ShadowCatch() 
+    public void CatchShadow() 
     {
         if (shadowMaskRenderFeature != null)
         {
@@ -93,95 +106,107 @@ public class ShadowMeshGenerator : MonoBehaviour
                 this.boundingBox[5] = Mathf.Max(this.boundingBox[5], worldPos.z);
             }
         }
+
         Vector3[] pointPositionsArray = pointPositions.ToArray();
         int pointCount = pointPositionsArray.Length;
+        ShadowState state = ShadowState.Normal;
         if (pointCount == 0)
         {
             Debug.LogWarning("No points found.");
-            return;
+            state = ShadowState.None;
         }
         Debug.Log("Point count: " + pointCount);
+        if (pointCount > 200000)
+        {
+            state = ShadowState.Oversize;
+        }
+
         BoundingBoxCheck();
-        ToGenerateShadowMeshHandler(pointPositionsArray.Length, pointPositionsArray);
+        ToGenerateShadowMeshHandler(pointPositionsArray.Length, pointPositionsArray, state);
     }
 
-    public void ToGenerateShadowMeshHandler(int pointCount, Vector3[] pointDataArray)
+    public void ToGenerateShadowMeshHandler(int pointCount, Vector3[] pointDataArray, ShadowState shadowState)
     {
-        this.pointCount = pointCount;
-        this.pointDataArray = pointDataArray;
+        shadowExtremeCaseUIHandler.SwitchUI(shadowState);
 
-        #if UNITY_WEBGL
-        #else
-            CalculateBoundingBox();
-        #endif
-
-        //Set the mode used to create the mesh.
-        //Cubes is faster and creates less verts, tetrahedrons is slower and creates more verts but better represents the mesh surface.
-        Marching marching = null;
-        if(mode == MARCHING_MODE.TETRAHEDRON)
-            marching = new MarchingTertrahedron();
-        else
-            marching = new MarchingCubes();
-
-        //Surface is the value that represents the surface of mesh
-        //For example the perlin noise has a range of -1 to 1 so the mid point is where we want the surface to cut through.
-        //The target value does not have to be the mid point it can be any value with in the range.
-        marching.Surface = 0.0f;
-
-        int width = 128, height = 128, depth = 128; //The size of voxel array.
-        var voxels = new VoxelArray(width, height, depth);
-        foreach (Vector3 point in this.pointDataArray)
+        if (shadowState == ShadowState.Normal)
         {
-            int x = Mathf.FloorToInt((point.x - this.boundingBox[0]) / (this.boundingBox[3] - this.boundingBox[0]) * (width - 1));
-            int y = Mathf.FloorToInt((point.y - this.boundingBox[1]) / (this.boundingBox[4] - this.boundingBox[1]) * (height - 1));
-            int z = Mathf.FloorToInt((point.z - this.boundingBox[2]) / (this.boundingBox[5] - this.boundingBox[2]) * (depth - 1));
+            this.pointCount = pointCount;
+            this.pointDataArray = pointDataArray;
 
-            voxels[x, y, z] = 1.0f;
-        }
+            #if UNITY_WEBGL
+            #else
+                CalculateBoundingBox();
+            #endif
 
-        List<Vector3> verts = new List<Vector3>();
-        List<Vector3> normals = new List<Vector3>();
-        List<int> indices = new List<int>();
+            //Set the mode used to create the mesh.
+            //Cubes is faster and creates less verts, tetrahedrons is slower and creates more verts but better represents the mesh surface.
+            Marching marching = null;
+            if (mode == MARCHING_MODE.TETRAHEDRON)
+                marching = new MarchingTertrahedron();
+            else
+                marching = new MarchingCubes();
 
-        //The mesh produced is not optimal. There is one vert for each index.
-        //Would need to weld vertices for better quality mesh.
-        marching.Generate(voxels.Voxels, verts, indices);
+            //Surface is the value that represents the surface of mesh
+            //For example the perlin noise has a range of -1 to 1 so the mid point is where we want the surface to cut through.
+            //The target value does not have to be the mid point it can be any value with in the range.
+            marching.Surface = 0.0f;
 
-        //Create the normals from the voxel.
-        if (showNormals)
-        {
+            int width = 128, height = 128, depth = 128; //The size of voxel array.
+            var voxels = new VoxelArray(width, height, depth);
+            foreach (Vector3 point in this.pointDataArray)
+            {
+                int x = Mathf.FloorToInt((point.x - this.boundingBox[0]) / (this.boundingBox[3] - this.boundingBox[0]) * (width - 1));
+                int y = Mathf.FloorToInt((point.y - this.boundingBox[1]) / (this.boundingBox[4] - this.boundingBox[1]) * (height - 1));
+                int z = Mathf.FloorToInt((point.z - this.boundingBox[2]) / (this.boundingBox[5] - this.boundingBox[2]) * (depth - 1));
+
+                voxels[x, y, z] = 1.0f;
+            }
+
+            List<Vector3> verts = new List<Vector3>();
+            List<Vector3> normals = new List<Vector3>();
+            List<int> indices = new List<int>();
+
+            //The mesh produced is not optimal. There is one vert for each index.
+            //Would need to weld vertices for better quality mesh.
+            marching.Generate(voxels.Voxels, verts, indices);
+
+            //Create the normals from the voxel.
+            if (showNormals)
+            {
+                for (int i = 0; i < verts.Count; i++)
+                {
+                    //Presumes the vertex is in local space where
+                    //the min value is 0 and max is width/height/depth.
+                    Vector3 p = verts[i];
+
+                    float u = p.x / (width - 1.0f);
+                    float v = p.y / (height - 1.0f);
+                    float w = p.z / (depth - 1.0f);
+
+                    Vector3 n = voxels.GetNormal(u, v, w);
+
+                    normals.Add(n);
+                }
+            }
+
+            Vector3 pivotOffset = new Vector3(
+                (this.boundingBox[0] + this.boundingBox[3]) / 2,
+                (this.boundingBox[1] + this.boundingBox[4]) / 2,
+                (this.boundingBox[2] + this.boundingBox[5]) / 2
+            );
+
             for (int i = 0; i < verts.Count; i++)
             {
-                //Presumes the vertex is in local space where
-                //the min value is 0 and max is width/height/depth.
-                Vector3 p = verts[i];
-
-                float u = p.x / (width - 1.0f);
-                float v = p.y / (height - 1.0f);
-                float w = p.z / (depth - 1.0f);
-
-                Vector3 n = voxels.GetNormal(u, v, w);
-
-                normals.Add(n);
+                Vector3 v = verts[i];
+                v.x = Mathf.Lerp(this.boundingBox[0], this.boundingBox[3], v.x / (float)(width - 1));
+                v.y = Mathf.Lerp(this.boundingBox[1], this.boundingBox[4], v.y / (float)(height - 1));
+                v.z = Mathf.Lerp(this.boundingBox[2], this.boundingBox[5], v.z / (float)(depth - 1));
+                verts[i] = v - pivotOffset;
             }
+
+            CreateShadowMesh(verts, normals, indices, pivotOffset);
         }
-
-        Vector3 pivotOffset = new Vector3(
-            (this.boundingBox[0] + this.boundingBox[3]) / 2,
-            (this.boundingBox[1] + this.boundingBox[4]) / 2, 
-            (this.boundingBox[2] + this.boundingBox[5]) / 2
-        );
-
-        for (int i = 0; i < verts.Count; i++)
-        {
-            Vector3 v = verts[i];
-            v.x = Mathf.Lerp(this.boundingBox[0], this.boundingBox[3], v.x / (float)(width - 1));
-            v.y = Mathf.Lerp(this.boundingBox[1], this.boundingBox[4], v.y / (float)(height - 1));
-            v.z = Mathf.Lerp(this.boundingBox[2], this.boundingBox[5], v.z / (float)(depth - 1));
-            verts[i] = v - pivotOffset;
-        }
-
-        CreateShadowMesh(verts, normals, indices, pivotOffset);
     }
 
     private void CalculateBoundingBox()
@@ -286,21 +311,16 @@ public class ShadowMeshGenerator : MonoBehaviour
         existingShadowMesh = new GameObject("Generated Shadow Mesh");
         existingShadowMesh.transform.position = position;
         existingShadowMesh.AddComponent<MeshFilter>().mesh = mesh;
+
         existingShadowMesh.AddComponent<MeshCollider>().sharedMesh = mesh;
         existingShadowMesh.GetComponent<MeshCollider>().convex = true;
-
         existingShadowMesh.AddComponent<InteractableObject>().enableInteraction = true;
-        existingShadowMesh.AddComponent<ShadowMeshController>().Appear(mesh);
-
         existingShadowMesh.AddComponent<Rigidbody>();
         existingShadowMesh.GetComponent<Rigidbody>().isKinematic = true;
         existingShadowMesh.layer = LayerMask.NameToLayer("ShadowMesh");
-        //existingShadowMesh.AddComponent<PlatformInteractor>();
 
-        //existingShadowMesh.GetComponent<PlatformInteractor>().interactionRange = 2.0f;
-        //existingShadowMesh.GetComponent<PlatformInteractor>().interactableObj = transform.gameObject;
-        //existingShadowMesh.GetComponent<PlatformInteractor>().playerObj = platform.GetComponent<PlatformInteractor>().playerObj;
-        //existingShadowMesh.GetComponent<PlatformInteractor>().playerManager = platform.GetComponent<PlatformInteractor>().playerManager;
-        //existingShadowMesh.GetComponent<PlatformInteractor>().ui = platform.GetComponent<PlatformInteractor>().ui;
+        HasGeneratedShadow?.Invoke(existingShadowMesh);
+        AppearSound.Play();
+        existingShadowMesh.AddComponent<ShadowMeshController>().Appear(mesh);
     }
 }
