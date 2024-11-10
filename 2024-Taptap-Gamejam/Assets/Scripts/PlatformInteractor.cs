@@ -45,6 +45,9 @@ public class PlatformInteractor : MonoBehaviour
 
         shadowMeshGenerator = smg.GetComponent<ShadowMeshGenerator>();
         shadowMeshGenerator.HasGeneratedShadow += HasGeneratedShadowHandler;
+
+        isInteracting = false;
+        isInteractingWithShadow = false;
     }
     void Update()
     {
@@ -71,9 +74,9 @@ public class PlatformInteractor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 // Debug.Log("CameraFollowPoint: "+  playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation);
-                if (isInteractingWithShadow)
+                if (isInteractingWithShadow && isInteracting)
                 {
-                    //
+                    Debug.Log("isInteractingWithShadow: " + isInteractingWithShadow);
                 }
                 else
                 {
@@ -106,6 +109,8 @@ public class PlatformInteractor : MonoBehaviour
                     }
                 }
             }
+
+            Debug.Log("isInteractingWithShadow: " + isInteractingWithShadow);
 
             if (isInteracting)
             {
@@ -180,7 +185,7 @@ public class PlatformInteractor : MonoBehaviour
 
     private void OnDisable()
     {
-        shadowMeshGenerator.HasGeneratedShadow -= HasGeneratedShadowHandler;
+        //shadowMeshGenerator.HasGeneratedShadow -= HasGeneratedShadowHandler;
     }
 }
 
