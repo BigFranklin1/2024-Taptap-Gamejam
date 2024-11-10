@@ -44,7 +44,6 @@ public class PlatformInteractor : MonoBehaviour
         shadowExtremeCaseUIHandler = shadowExtremeCaseUI.GetComponent<ShadowExtremeCaseUIHandler>();
 
         shadowMeshGenerator = smg.GetComponent<ShadowMeshGenerator>();
-        shadowMeshGenerator.HasGeneratedShadow += HasGeneratedShadowHandler;
 
         isInteracting = false;
         isInteractingWithShadow = false;
@@ -76,10 +75,11 @@ public class PlatformInteractor : MonoBehaviour
                 // Debug.Log("CameraFollowPoint: "+  playerManager.GetComponent<MyPlayer>().CameraFollowPoint.rotation);
                 if (isInteractingWithShadow && isInteracting)
                 {
-                    Debug.Log("isInteractingWithShadow: " + isInteractingWithShadow);
+                    //Debug.Log("isInteractingWithShadow: " + isInteractingWithShadow);
                 }
                 else
                 {
+
                     isInteracting = !isInteracting; // Toggle interaction state
 
                     InteractableObject interactable = interactableObj.GetComponent<InteractableObject>();
@@ -99,6 +99,8 @@ public class PlatformInteractor : MonoBehaviour
                         guidanceUIController.SwitchUI(GuidanceUIState.ControlObject);
                         playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(true);
                         Debug.Log("Started interaction with object.");
+                        shadowMeshGenerator.HasGeneratedShadow += HasGeneratedShadowHandler;
+
                     }
                     else
                     {
@@ -106,11 +108,13 @@ public class PlatformInteractor : MonoBehaviour
                         shadowExtremeCaseUIHandler.SwitchUI(ShadowState.Normal);
                         playerManager.GetComponent<MyPlayer>().OrbitCamera.ShadowCastingMode(false);
                         Debug.Log("Ended interaction with object.");
+                        shadowMeshGenerator.HasGeneratedShadow -= HasGeneratedShadowHandler;
+
                     }
                 }
             }
 
-            Debug.Log("isInteractingWithShadow: " + isInteractingWithShadow);
+            //Debug.Log("isInteractingWithShadow: " + isInteractingWithShadow);
 
             if (isInteracting)
             {
