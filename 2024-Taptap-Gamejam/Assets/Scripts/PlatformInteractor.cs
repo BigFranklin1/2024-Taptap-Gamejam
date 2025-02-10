@@ -22,7 +22,7 @@ public class PlatformInteractor : MonoBehaviour
     private bool isInteractingWithShadow = false;
     public bool isEnabled;
     public GameObject followPosition;
-    public PlatformActiveDetection standArea;
+    public PlatformTrigger standArea;
 
     // 定义玩家层和阴影层
     public LayerMask playerLayer;
