@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlatformTrigger : MonoBehaviour
 {
+    private static PlatformTrigger firstInstance = null;
+
     private static PlatformTrigger currentClosestTrigger = null;
     private static GameObject playerGO = null;
     private static List<PlatformTrigger> activeTriggers = new List<PlatformTrigger>();
@@ -10,6 +13,31 @@ public class PlatformTrigger : MonoBehaviour
     public GameObject shadowCaster;
     public bool triggered = false;
     private Material shadowCasterMaterial;
+
+    private void Awake()
+    {
+        if (firstInstance == null)
+        {
+            firstInstance = this;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (firstInstance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            firstInstance = null;
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currentClosestTrigger = null;
+        playerGO = null;
+        activeTriggers.Clear();
+    }
 
     private void Start()
     {
