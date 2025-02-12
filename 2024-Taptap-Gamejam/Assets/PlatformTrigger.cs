@@ -7,15 +7,21 @@ public class PlatformTrigger : MonoBehaviour
     private static GameObject playerGO = null;
     private static List<PlatformTrigger> activeTriggers = new List<PlatformTrigger>();
 
+    public GameObject shadowCaster;
     public bool triggered = false;
+    private Material shadowCasterMaterial;
 
     private void Start()
     {
-
+        if (shadowCaster != null)
+        {
+            shadowCasterMaterial = shadowCaster.GetComponent<Renderer>().material;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // Debug.Log("Enter " + gameObject.name);
         if (playerGO == null)
         {
             playerGO = other.gameObject;
@@ -35,13 +41,13 @@ public class PlatformTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // Debug.Log("Exit " + gameObject.name);
         if (other.CompareTag("Player"))
         {
-            triggered = false;
             activeTriggers.Remove(this);
             if (currentClosestTrigger == this)
             {
-                currentClosestTrigger = null;
+                UntriggerPlatform();
             }
         }
     }
@@ -67,14 +73,30 @@ public class PlatformTrigger : MonoBehaviour
 
             if (currentClosestTrigger != closestTrigger)
             {
+                // Debug.Log("Switch");
+                currentClosestTrigger.UntriggerPlatform();
                 closestTrigger.TriggerPlatform();
             }
+        }
+        else if (activeTriggers.Contains(this) && currentClosestTrigger != this)
+        {
+            TriggerPlatform();
         }
     }
 
     private void TriggerPlatform()
     {
+        // Debug.Log("Trigger "+gameObject.name + "    Count " + activeTriggers.Count);
         triggered = true;
         currentClosestTrigger = this;
+        shadowCasterMaterial.SetInt("_StencilRef", 0);
+    }
+
+    private void UntriggerPlatform()
+    {
+        // Debug.Log("Untrigger " + gameObject.name + "    Count " + activeTriggers.Count);
+        triggered = false;
+        currentClosestTrigger = null;
+        shadowCasterMaterial.SetInt("_StencilRef", -1);
     }
 }
