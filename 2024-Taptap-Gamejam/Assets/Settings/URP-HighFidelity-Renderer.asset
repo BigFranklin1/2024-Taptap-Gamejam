@@ -54,7 +54,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 2962165452385168766}
-  m_RendererFeatureMap: adc0de57c6d2eee57e2d5ae3c8b91b29
+  - {fileID: 5825608943530254807}
+  m_RendererFeatureMap: adc0de57c6d2eee57e2d5ae3c8b91b29d7a175ff77b8d850
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -112,10 +113,6 @@ MonoBehaviour:
   m_Active: 1
   shadowPointsExtractionShader: {fileID: 7200000, guid: c3090452d91d9d94eb35a4e01ed0176e,
     type: 3}
-  SSShadowMaskRenderTexture: {fileID: 8400000, guid: 077c1e8044f8e874cbee0434dba714dd,
-    type: 2}
-  SSShadowPointsRenderTexture: {fileID: 8400000, guid: a62e1b3ebea0d6642be34bc791f03123,
-    type: 2}
 --- !u!114 &5129625910716309342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +127,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   shadowPointsExtractionShader: {fileID: 0}
-  SSShadowMaskRenderTexture: {fileID: 8400000, guid: 077c1e8044f8e874cbee0434dba714dd,
-    type: 2}
-  SSShadowPointsRenderTexture: {fileID: 0}
+--- !u!114 &5825608943530254807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: RenderObjects
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: RenderObjects
+    Event: 300
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 1024
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 608d63fda4989af4e906689d68c1ce98, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideShader: {fileID: 0}
+    overrideShaderPassIndex: 0
+    overrideMode: 1
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 1
+      stencilReference: 1
+      stencilCompareFunction: 6
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Brick
+  m_Name: BrickWithOutline
   m_Shader: {fileID: 4800000, guid: d07f2d73e29b122478a34f59a3573235, type: 3}
   m_Parent: {fileID: 2100000, guid: b4a5cda977b468143821cbadedb83c22, type: 2}
   m_ModifiedSerializedProperties: 0

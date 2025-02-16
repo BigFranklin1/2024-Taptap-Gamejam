@@ -12,7 +12,7 @@ public class PlatformTrigger : MonoBehaviour
 
     public GameObject shadowCaster;
     public bool triggered = false;
-    private Material shadowCasterMaterial;
+    // private Material shadowCasterMaterial;
 
     private void Awake()
     {
@@ -41,10 +41,10 @@ public class PlatformTrigger : MonoBehaviour
 
     private void Start()
     {
-        if (shadowCaster != null)
-        {
-            shadowCasterMaterial = shadowCaster.GetComponent<Renderer>().material;
-        }
+    //    if (shadowCaster != null)
+    //    {
+    //        shadowCasterMaterial = shadowCaster.GetComponent<Renderer>().material;
+    //    }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -117,7 +117,8 @@ public class PlatformTrigger : MonoBehaviour
         // Debug.Log("Trigger "+gameObject.name + "    Count " + activeTriggers.Count);
         triggered = true;
         currentClosestTrigger = this;
-        shadowCasterMaterial.SetInt("_StencilRef", 0);
+        // shadowCasterMaterial.SetInt("_StencilRef", 0);
+        shadowCaster.layer = LayerMask.NameToLayer("InteractableShadowCasters");
     }
 
     private void UntriggerPlatform()
@@ -125,6 +126,7 @@ public class PlatformTrigger : MonoBehaviour
         // Debug.Log("Untrigger " + gameObject.name + "    Count " + activeTriggers.Count);
         triggered = false;
         currentClosestTrigger = null;
-        shadowCasterMaterial.SetInt("_StencilRef", -1);
+        // shadowCasterMaterial.SetInt("_StencilRef", -1);
+        shadowCaster.layer = LayerMask.NameToLayer("Default");
     }
 }

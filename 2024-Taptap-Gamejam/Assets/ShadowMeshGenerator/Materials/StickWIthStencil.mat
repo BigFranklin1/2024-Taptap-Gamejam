@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StickWIthStencil
+  m_Shader: {fileID: 4800000, guid: fc6b716f9d6fcbd4f8a6887da9a17e48, type: 3}
+  m_Parent: {fileID: 2100000, guid: 1977c7e02feb29e41816d75f89c06379, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _NORMALMAP
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 806c15a487e47dd4dad77c5e036c8e53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 0b9c15732fc70c043b130a2978befda0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 806c15a487e47dd4dad77c5e036c8e53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpScale: 0.5
+    - _Smoothness: 0
+    m_Colors:
+    - _BaseColor: {r: 0.42138356, g: 0.32767963, b: 0.2901981, a: 1}
+    - _Color: {r: 0.42138353, g: 0.3276796, b: 0.29019806, a: 1}
+  m_BuildTextureStacks: []
